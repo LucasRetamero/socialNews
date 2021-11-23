@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>King</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -93,8 +94,10 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <button type="button" class="btn btn-primary">Primary</button>
                 </div>
             </div>
         </div>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
     </body>
 </html>
