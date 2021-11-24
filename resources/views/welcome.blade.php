@@ -63,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -84,7 +85,7 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
+<!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -97,7 +98,45 @@
                     <button type="button" class="btn btn-primary">Primary</button>
                 </div>
             </div>
-        </div>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        </div>-->
+        <!--<script src="{{asset('js/bootstrap.min.js')}}"></script>-->
+        <label> 01 </label>
+        <input type="text" id="txtUm" readonly/></br>
+        <label> 02 </label>
+        <input type="text" id="txtDois"readonly/></br>
+        <label> 03 </label>
+        <input type="text" id="txtTres"readonly/></br>
+        <label> 04 </label>
+        <input type="text" id="txtQuatro"readonly/></br>
+        <label> 05 </label>
+        <input type="text" id="txtCinco"readonly/></br>
+        <label> 06 </label>
+        <input type="text" id="txtSeis"readonly/></br>
+        <label> 07 </label>
+        <input type="text" id="txtSete"readonly/></br>
+        <label> 08 </label>
+        <input type="text" id="txtOito"readonly/></br>
+        <label> 09 </label>
+        <input type="text" id="txtNove"readonly/></br>
+        <label> 10 </label>
+        <input type="text" id="txtDez"readonly/></br>
+        <label> 11 </label>
+        <input type="text" id="txtOnze"readonly/></br>
+        <label> 12 </label>
+        <input type="text" id="txtDoze"readonly/></br>
+        <label> 13 </label>
+        <input type="text" id="txtTreze"readonly/></br>
+        <label> 14 </label>
+        <input type="text" id="txtQuatorze"readonly/></br>
+        <label> 15 </label>
+        <input type="text" id="txtQuinze"readonly/></br>
+        <label> 16 </label>
+        <input type="text" id="txtDezeseis"readonly/></br>
+        <label> 17 </label>
+        <input type="text" id="txtDezesete"readonly/></br>
+        <label> 18 </label>
+        <input type="text" id="txtDezoito"readonly/></br>
+        <button onClick="generateRan()">Gerar numeros</button>
+        <script src="{{ asset('js/loto-min.js') }}"></script>
     </body>
 </html>
