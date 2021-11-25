@@ -62,6 +62,21 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            label{
+               font-weight: bold;    
+            }
+            .col-sm input[type=text]{
+             font-weight: bold; 
+             width: 30px;
+             border-color:red;
+            }
+            .hidden{
+               display: none; 
+            }
+
+
+            
         </style>
 
     </head>
@@ -80,63 +95,305 @@
                     @endauth
                 </div>
             @endif
+        
+          <div class="content">
+                <div class="h1">
+                    Valores Gerados
+                </div>
+    
+         <div class="row">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+         <div class="col-sm">
+          <label>01</label>
+          <input type="text" id="txtUm" readonly/>
+         </div>
+
+         <div class="col-sm">
+          <label>02</label>
+          <input type="text" id="txtDois"readonly/>
+         </div>
+
+         <div class="col-sm">
+          <label>03</label>
+          <input type="text" id="txtTres"readonly/>
+         </div>
+
+         </div>
+
+        <div class="row">
+
+        <div class="col-sm">
+         <label>04</label>
+         <input type="text" id="txtQuatro"readonly/>
+        </div>
+
+        <div class="col-sm">
+         <label>05</label>
+         <input type="text" id="txtCinco"readonly/>
+        </div>
+
+        <div class="col-sm">
+         <label>06</label>
+         <input type="text" id="txtSeis"readonly/>
+        </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-sm">
+         <label>07</label>
+         <input type="text" id="txtSete"readonly/>
+        </div>
+        
+        <div class="col-sm">
+         <label>08</label>
+         <input type="text" id="txtOito"readonly/>
+        </div>
+
+
+        <div class="col-sm">
+         <label>09</label>
+         <input type="text" id="txtNove"readonly/>
+        </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-sm">
+         <label>10</label>
+         <input type="text" id="txtDez"readonly/>
+        </div>
+
+        <div class="col-sm">
+         <label>11</label>
+         <input type="text" id="txtOnze"readonly/>
+        </div>
+
+
+        <div class="col-sm">
+         <label>12</label>
+         <input type="text" id="txtDoze"readonly/>
+        </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-sm">
+         <label>13</label>
+         <input type="text" id="txtTreze"readonly/>
+        </div>
+
+
+        <div class="col-sm">
+         <label>14</label>
+         <input type="text" id="txtQuatorze"readonly/>
+        </div>
+
+        <div class="col-sm">
+         <label id="lblQuinze">15</label>
+         <input type="text" id="txtQuinze"readonly/>
+        </div>
+
+        </div>
+        
+        <div class="row">
+
+        <div class="col-sm">
+         <label id="lblDezeseis" class="hidden">16</label>
+         <input type="text" id="txtDezeseis" class="hidden" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <label id="lblDezesete" class="hidden">17</label>
+         <input type="text" id="txtDezesete" class="hidden" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <label id="lblDezoito" class="hidden">18</label>
+         <input type="text" id="txtDezoito" class="hidden" readonly/>
+        </div>
+
+        </div>
+        <br>
+    
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17,1)">Gerar 18 numeros</button>
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(16,1)">Gerar 17 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(15,1)">Gerar 16 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(14,1)">Gerar 15 numeros</button> 
+         
+
+         <br>
+        <!-- Valores para editar-->
+
+        <div class="h1">
+                   Selecione seu palpite
                 </div>
-<!--
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                    <button type="button" class="btn btn-primary">Primary</button>
-                </div>
-            </div>
-        </div>-->
-        <!--<script src="{{asset('js/bootstrap.min.js')}}"></script>-->
-        <label> 01 </label>
-        <input type="text" id="txtUm" readonly/></br>
-        <label> 02 </label>
-        <input type="text" id="txtDois"readonly/></br>
-        <label> 03 </label>
-        <input type="text" id="txtTres"readonly/></br>
-        <label> 04 </label>
-        <input type="text" id="txtQuatro"readonly/></br>
-        <label> 05 </label>
-        <input type="text" id="txtCinco"readonly/></br>
-        <label> 06 </label>
-        <input type="text" id="txtSeis"readonly/></br>
-        <label> 07 </label>
-        <input type="text" id="txtSete"readonly/></br>
-        <label> 08 </label>
-        <input type="text" id="txtOito"readonly/></br>
-        <label> 09 </label>
-        <input type="text" id="txtNove"readonly/></br>
-        <label> 10 </label>
-        <input type="text" id="txtDez"readonly/></br>
-        <label> 11 </label>
-        <input type="text" id="txtOnze"readonly/></br>
-        <label> 12 </label>
-        <input type="text" id="txtDoze"readonly/></br>
-        <label> 13 </label>
-        <input type="text" id="txtTreze"readonly/></br>
-        <label> 14 </label>
-        <input type="text" id="txtQuatorze"readonly/></br>
-        <label> 15 </label>
-        <input type="text" id="txtQuinze"readonly/></br>
-        <label> 16 </label>
-        <input type="text" id="txtDezeseis"readonly/></br>
-        <label> 17 </label>
-        <input type="text" id="txtDezesete"readonly/></br>
-        <label> 18 </label>
-        <input type="text" id="txtDezoito"readonly/></br>
-        <button onClick="generateRan()">Gerar numeros</button>
-        <script src="{{ asset('js/loto-min.js') }}"></script>
+    
+         <div class="row">
+
+         <div class="col-sm">
+          <input type="text" id="txtUmEditado" value="01" readonly/>
+         </div>
+
+         <div class="col-sm">
+         <input type="text" id="txtDoisEditado" value="02" readonly/>
+         </div>
+
+         <div class="col-sm">
+         <input type="text" id="txtTresEditado" value="03" readonly/>
+         </div>
+
+         <div class="col-sm">
+          <input type="text" id="txtQuatroEditado" value="04" readonly/>
+         </div>
+
+         <div class="col-sm">
+           <input type="text" id="txtCincoEditado" value="05" readonly/>
+         </div>
+
+         </div>
+
+         <br>
+
+        <div class="row">
+         <div class="col-sm">
+          <input type="text" id="txtSeisEditado" value="06" readonly/>
+         </div>
+
+        <div class="col-sm">
+        <input type="text" id="txtSeteEditado" value="07" readonly/>
+        </div>
+        
+        <div class="col-sm">
+         <input type="text" id="txtOitoEditado" value="08" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtNoveEditado" value="09" readonly/>
+        </div>
+
+        <div class="col-sm">
+        <input type="text"  id="txtDezEditado" value="10" readonly/>
+        </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+        
+        <div class="col-sm">
+         <input type="text" id="txtOnzeEditado" value="11" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtDozeEditado" value="12" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtTrezeEditado" value="13" readonly/>
+        </div>
+
+       
+        <div class="col-sm">
+         <input type="text" id="txtQuatorzeEditado" value="14" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtQuinzeEditado" value="15" readonly/>
+        </div>
+
+        </div>
+        
+        <br>
+
+        <div class="row">
+
+        <div class="col-sm">
+         <input type="text" id="txtDezeseisEditado"  value="16" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtDezeseteEditado"  value="17" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtDezoitoEditado"  value="18" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtDezenoveEditado"  value="19" readonly/>
+        </div>
+
+        <div class="col-sm">
+         <input type="text" id="txtVinteEditado"  value="20" readonly/>
+        </div>
+
+        </div>
+       
+       <br>
+
+        <div class="row">
+
+       <div class="col-sm">
+         <input type="text" id="txtDezeseisEditado"  value="16" readonly/>
+       </div>
+
+       <div class="col-sm">
+        <input type="text" id="txtDezeseteEditado"  value="17" readonly/>
+      </div>
+
+      <div class="col-sm">
+       <input type="text" id="txtDezoitoEditado"  value="18" readonly/>
+      </div>
+
+       <div class="col-sm">
+        <input type="text" id="txtDezenoveEditado"  value="19" readonly/>
+       </div>
+
+      <div class="col-sm">
+       <input type="text" id="txtVinteEditado"  value="20" readonly/>
+      </div>
+
+      </div>
+      
+      <br>
+
+      <div class="row">
+
+<div class="col-sm">
+  <input type="text" id="txtVinteUmEditado"  value="21" readonly/>
+</div>
+
+<div class="col-sm">
+ <input type="text" id="txtVinteDoisEditado"  value="22" readonly/>
+</div>
+
+<div class="col-sm">
+<input type="text" id="txtVinteTresEditado"  value="23" readonly/>
+</div>
+
+<div class="col-sm">
+ <input type="text" id="txtVinteQuatroEditado"  value="24" readonly/>
+</div>
+
+<div class="col-sm">
+<input type="text" id="txtVinteCincoEditado"  value="25" readonly/>
+</div>
+
+</div>
+
+       <br>
+       <!--<button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17,2)">Gerar 18 numeros restantes</button>
+       <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(16,2)">Gerar 17 numeros restantes</button> 
+       <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(15,2)">Gerar 16 numeros restantes</button> 
+       <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(14,2)">Gerar 15 numeros restantes</button> 
+        --> 
+        <!-- Javascript-->
+       <script src="{{ asset('js/loto-min.js') }}"></script>
+       <script src="{{ asset('js/bootstrap.min.js' )}}"></script>-->
+       
     </body>
 </html>
