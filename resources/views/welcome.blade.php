@@ -202,18 +202,18 @@
         <div class="row">
 
         <div class="col-sm">
-         <label id="lblDezeseis" class="hidden">16</label>
-         <input type="text" id="txtDezeseis" class="hidden" readonly/>
+         <label id="lblDezeseis" >16</label>
+         <input type="text" id="txtDezeseis" readonly/>
         </div>
 
         <div class="col-sm">
-         <label id="lblDezesete" class="hidden">17</label>
-         <input type="text" id="txtDezesete" class="hidden" readonly/>
+         <label id="lblDezesete" >17</label>
+         <input type="text" id="txtDezesete" readonly/>
         </div>
 
         <div class="col-sm">
-         <label id="lblDezoito" class="hidden">18</label>
-         <input type="text" id="txtDezoito" class="hidden" readonly/>
+         <label id="lblDezoito">18</label>
+         <input type="text" id="txtDezoito"  readonly/>
         </div>
 
         </div>
@@ -222,7 +222,7 @@
         <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17,1)">Gerar 18 numeros</button>
         <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(16,1)">Gerar 17 numeros</button> 
         <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(15,1)">Gerar 16 numeros</button> 
-        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="seeVariable()">Gerar 15 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(14,1)">Gerar 15 numeros</button> 
          
 
          <br>

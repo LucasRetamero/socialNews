@@ -73,7 +73,7 @@ function generateRan(valor, tipoValor){
         //console.log(mtz);
         if(tipoValor == 1){
         showComponentes(mtz);
-        clearComponents(valor);
+        //clearComponents(valor);
         }else{
          showComponentesEditable(mtz);  
          clearComponentsEditable(valor);
@@ -92,9 +92,12 @@ function generateRan(valor, tipoValor){
 
     function showComponentes(array){
       for(var p=0; p<componentes.length; p++){
-        componentes[p].value = array[p]; 
-     }
-
+        if(p<array.length){
+        componentes[p].value = array[p];
+        }else{
+        componentes[p].value = "";   
+        } 
+      }
     }
 
     function clearComponents(valor){
@@ -182,10 +185,6 @@ function generateRan(valor, tipoValor){
         } 
      }
      
-     function seeVariable(){
-      console.log(numberUser); 
-     }
-
      function changeBorderColorAndInserValue(componente){
 
      var getComponente = document.getElementById(componente);
@@ -222,7 +221,7 @@ function generateRan(valor, tipoValor){
         }
       }
 
-
+  
      function validationIfExistComponente(value){
         for(var x=0; x<componentsChangeColor.length; x++){
             if(componentsChangeColor[x] == value){
@@ -233,12 +232,14 @@ function generateRan(valor, tipoValor){
      }
 
      function addNumberByUser(componente){
-         if(numberUser.length != 18){
+         
+         if(numberUser.length != 18 || validationIfExistComponente(componente)){
            changeBorderColorAndInserValue(componente);
          }else{
           console.log("Full number !"); 
           console.log(numberUser);  
          }
+         
      }
 
 
