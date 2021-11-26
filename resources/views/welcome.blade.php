@@ -222,7 +222,7 @@
         <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17,1)">Gerar 18 numeros</button>
         <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(16,1)">Gerar 17 numeros</button> 
         <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(15,1)">Gerar 16 numeros</button> 
-        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(14,1)">Gerar 15 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="seeVariable()">Gerar 15 numeros</button> 
          
 
          <br>
@@ -235,23 +235,23 @@
          <div class="row">
 
          <div class="col-sm">
-          <input type="text" id="txtUmEditado" value="01" readonly/>
+          <input type="text" id="txtUmEditado" value="01" onMousedown="addNumberByUser('txtUmEditado')" readonly/>
          </div>
 
          <div class="col-sm">
-         <input type="text" id="txtDoisEditado" value="02" readonly/>
+         <input type="text" id="txtDoisEditado" value="02" onMousedown="addNumberByUser('txtDoisEditado')" readonly/>
          </div>
 
          <div class="col-sm">
-         <input type="text" id="txtTresEditado" value="03" readonly/>
+         <input type="text" id="txtTresEditado" value="03" onMousedown="addNumberByUser('txtTresEditado')" readonly/>
          </div>
 
          <div class="col-sm">
-          <input type="text" id="txtQuatroEditado" value="04" readonly/>
+          <input type="text" id="txtQuatroEditado" value="04" onMousedown="addNumberByUser('txtQuatroEditado')" readonly/>
          </div>
 
          <div class="col-sm">
-           <input type="text" id="txtCincoEditado" value="05" readonly/>
+           <input type="text" id="txtCincoEditado" value="05" onMousedown="addNumberByUser('txtCincoEditado')" readonly/>
          </div>
 
          </div>
@@ -260,23 +260,23 @@
 
         <div class="row">
          <div class="col-sm">
-          <input type="text" id="txtSeisEditado" value="06" readonly/>
+          <input type="text" id="txtSeisEditado" value="06" onClick="addNumberByUser('txtSeisEditado')" readonly/>
          </div>
 
         <div class="col-sm">
-        <input type="text" id="txtSeteEditado" value="07" readonly/>
+        <input type="text" id="txtSeteEditado" value="07" onClick="addNumberByUser('txtSeteEditado')" readonly/>
         </div>
         
         <div class="col-sm">
-         <input type="text" id="txtOitoEditado" value="08" readonly/>
+         <input type="text" id="txtOitoEditado" value="08" onClick="addNumberByUser('txtOitoEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtNoveEditado" value="09" readonly/>
+         <input type="text" id="txtNoveEditado" value="09"  onClick="addNumberByUser('txtNoveEditado')"readonly/>
         </div>
 
         <div class="col-sm">
-        <input type="text"  id="txtDezEditado" value="10" readonly/>
+        <input type="text"  id="txtDezEditado" value="10"  onClick="addNumberByUser('txtDezEditado')" readonly/>
         </div>
         </div>
 
@@ -285,24 +285,24 @@
         <div class="row">
         
         <div class="col-sm">
-         <input type="text" id="txtOnzeEditado" value="11" readonly/>
+         <input type="text" id="txtOnzeEditado" value="11" onClick="addNumberByUser('txtOnzeEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtDozeEditado" value="12" readonly/>
+         <input type="text" id="txtDozeEditado" value="12" onClick="addNumberByUser('txtDozeEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtTrezeEditado" value="13" readonly/>
+         <input type="text" id="txtTrezeEditado" value="13" onClick="addNumberByUser('txtTrezeEditado')" readonly/>
         </div>
 
        
         <div class="col-sm">
-         <input type="text" id="txtQuatorzeEditado" value="14" readonly/>
+         <input type="text" id="txtQuatorzeEditado" value="14" onClick="addNumberByUser('txtQuatorzeEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtQuinzeEditado" value="15" readonly/>
+         <input type="text" id="txtQuinzeEditado" value="15" onClick="addNumberByUser('txtQuinzeEditado')" readonly/>
         </div>
 
         </div>
@@ -312,78 +312,56 @@
         <div class="row">
 
         <div class="col-sm">
-         <input type="text" id="txtDezeseisEditado"  value="16" readonly/>
+         <input type="text" id="txtDezeseisEditado"  value="16" onClick="addNumberByUser('txtDezeseisEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtDezeseteEditado"  value="17" readonly/>
+         <input type="text" id="txtDezeseteEditado"  value="17" onClick="addNumberByUser('txtDezeseteEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtDezoitoEditado"  value="18" readonly/>
+         <input type="text" id="txtDezoitoEditado"  value="18" onClick="addNumberByUser('txtDezoitoEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtDezenoveEditado"  value="19" readonly/>
+         <input type="text" id="txtDezenoveEditado"  value="19" onClick="addNumberByUser('txtDezenoveEditado')" readonly/>
         </div>
 
         <div class="col-sm">
-         <input type="text" id="txtVinteEditado"  value="20" readonly/>
+         <input type="text" id="txtVinteEditado"  value="20" onClick="addNumberByUser('txtVinteEditado')" readonly/>
         </div>
 
         </div>
        
        <br>
 
-        <div class="row">
-
-       <div class="col-sm">
-         <input type="text" id="txtDezeseisEditado"  value="16" readonly/>
-       </div>
-
-       <div class="col-sm">
-        <input type="text" id="txtDezeseteEditado"  value="17" readonly/>
-      </div>
-
-      <div class="col-sm">
-       <input type="text" id="txtDezoitoEditado"  value="18" readonly/>
-      </div>
-
-       <div class="col-sm">
-        <input type="text" id="txtDezenoveEditado"  value="19" readonly/>
-       </div>
-
-      <div class="col-sm">
-       <input type="text" id="txtVinteEditado"  value="20" readonly/>
-      </div>
-
-      </div>
-      
       <br>
 
       <div class="row">
 
 <div class="col-sm">
-  <input type="text" id="txtVinteUmEditado"  value="21" readonly/>
+  <input type="text" id="txtVinteUmEditado"  value="21" onClick="addNumberByUser('txtVinteUmEditado')" readonly/>
 </div>
 
 <div class="col-sm">
- <input type="text" id="txtVinteDoisEditado"  value="22" readonly/>
+ <input type="text" id="txtVinteDoisEditado"  value="22" onClick="addNumberByUser('txtVinteDoisEditado')"  readonly/>
 </div>
 
 <div class="col-sm">
-<input type="text" id="txtVinteTresEditado"  value="23" readonly/>
+<input type="text" id="txtVinteTresEditado"  value="23" onClick="addNumberByUser('txtVinteTresEditado')" readonly/>
 </div>
 
 <div class="col-sm">
- <input type="text" id="txtVinteQuatroEditado"  value="24" readonly/>
+ <input type="text" id="txtVinteQuatroEditado"  value="24" onClick="addNumberByUser('txtVinteQuatroEditado')" readonly/>
 </div>
 
 <div class="col-sm">
-<input type="text" id="txtVinteCincoEditado"  value="25" readonly/>
+<input type="text" id="txtVinteCincoEditado"  value="25" onClick="addNumberByUser('txtVinteCincoEditado')" readonly/>
 </div>
 
 </div>
+
+
 
        <br>
        <!--<button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17,2)">Gerar 18 numeros restantes</button>

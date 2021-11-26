@@ -41,6 +41,9 @@ var  componentesEditable = [
     document.getElementById("txtDezoitoEditado")
 ];
 
+//Number choosing  by user
+var numberUser = [];
+var componentsChangeColor = [];
 
 function generateRan(valor, tipoValor){
 
@@ -177,6 +180,65 @@ function generateRan(valor, tipoValor){
           changeLabelAndText("lblQuinzeEditado","txtQuinzeEditado","inline");
           break; 
         } 
+     }
+     
+     function seeVariable(){
+      console.log(numberUser); 
+     }
+
+     function changeBorderColorAndInserValue(componente){
+
+     var getComponente = document.getElementById(componente);
+     
+       if(validationIfExistComponente(componente)){  
+        componentsChangeColor.splice(removeIndexChangeColor(componente),1);
+        numberUser.splice(removeIndexNumber(getComponente.value),1);
+        getComponente.style.borderColor = "red"; 
+        getComponente.style.color = "black";
+        getComponente.style.backgroundColor = "white"; 
+       }else{
+        componentsChangeColor.push(componente);
+        numberUser.push(getComponente.value);
+        getComponente.style.borderColor = "black";
+        getComponente.style.color = "white";
+        getComponente.style.backgroundColor = "blue";
+       }
+       
+     }
+
+     function removeIndexChangeColor(value){
+      for(var o=0; o<componentsChangeColor.length; o++){
+         if(componentsChangeColor[o] == value){
+          return o;   
+         } 
+      }
+    }
+
+    function removeIndexNumber(value){
+        for(var o=0; o<numberUser.length; o++){
+           if(numberUser[o] == value){
+            return o;   
+           } 
+        }
+      }
+
+
+     function validationIfExistComponente(value){
+        for(var x=0; x<componentsChangeColor.length; x++){
+            if(componentsChangeColor[x] == value){
+            return true;    
+            } 
+         }
+        return false;
+     }
+
+     function addNumberByUser(componente){
+         if(numberUser.length != 18){
+           changeBorderColorAndInserValue(componente);
+         }else{
+          console.log("Full number !"); 
+          console.log(numberUser);  
+         }
      }
 
 
