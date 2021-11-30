@@ -45,7 +45,11 @@ var  componentesEditable = [
 var numberUser = [];
 var componentsChangeColor = [];
 
-function generateRan(valor, tipoValor){
+//testing
+var backupNumberUser=[];
+var change = 0;
+
+function generateRan(valor){
 
     var mtz=[], pos=0;
     
@@ -69,16 +73,14 @@ function generateRan(valor, tipoValor){
             if(pos<0) mtz.push(num);
     
         }
+
         mtz.sort();
-        //console.log(mtz);
-        if(tipoValor == 1){
-        showComponentes(mtz);
-        //clearComponents(valor);
+        if(numberUser.length > 0){
+          //showNumberByUser(valor);
+         showComponentes(showNumberByUser(valor));
         }else{
-         showComponentesEditable(mtz);  
-         clearComponentsEditable(valor);
-        }
-    
+        showComponentes(mtz);
+        }   
     }
     
     function addZero(y,n) {
@@ -91,111 +93,116 @@ function generateRan(valor, tipoValor){
     }
 
     function showComponentes(array){
-      for(var p=0; p<componentes.length; p++){
+      clearComponentes();
+    
+      for(var p=0; p< componentes.length; p++){
         if(p<array.length){
-        componentes[p].value = array[p];
+             if(componentes[p].value == ""){
+             componentes[p].value = array[p];
+             }
         }else{
         componentes[p].value = "";   
         } 
       }
     }
+    
+    function showNumberByUser(value){
+       var mtz=[], pos=0;
+      
+       if(change == 0){
+        backupNumberUser=[];
+        backupNumberUser.pushArray(numberUser);
+        change = 1;
+       }
+       numberUser = [];
+       numberUser.pushArray(backupNumberUser);
+       mtz.pushArray(numberUser);
 
-    function clearComponents(valor){
-       switch(valor){
-         case 17: //18 
-         changeLabelAndText("lblDezoito","txtDezoito","inline");
-         changeLabelAndText("lblDezesete","txtDezesete","inline");
-         changeLabelAndText("lblDezeseis","txtDezeseis","inline");
-         changeLabelAndText("lblQuinze","txtQuinze","inline");
-         break; 
+        while(mtz.length<=value){
+    
+        let num=(Math.floor(Math.random()*25) + 1);
+    
+        num=addZero(num, 2); //formata num com 2 dígitos
+    
+    /*
+    
+    pos = posição do num na matriz, 
+    
+    se pos = -1, não encontrou, e num é armazenado em 'mtz'. => Veja no log
+    
+    */
+    
+        pos=mtz.toString().search(num);
+    
+     //console.log('Num => '+num+' Pos => '+pos);
+            if(pos<0) mtz.push(num);
+    
+        }
 
-         case 16: //17
-         changeLabelAndText("lblDezoito","txtDezoito","none");
-         changeLabelAndText("lblDezesete","txtDezesete","inline");
-         changeLabelAndText("lblDezeseis","txtDezeseis","inline");
-         changeLabelAndText("lblQuinze","txtQuinze","inline");
-         break;
-
-         case 15: //16
-         changeLabelAndText("lblDezoito","txtDezoito","none");
-         changeLabelAndText("lblDezesete","txtDezesete","none");
-         changeLabelAndText("lblDezeseis","txtDezeseis","inline");
-         changeLabelAndText("lblQuinze","txtQuinze","inline");
-         break;
-
-         case 14: //15
-         changeLabelAndText("lblDezoito","txtDezoito","none");
-         changeLabelAndText("lblDezesete","txtDezesete","none");
-         changeLabelAndText("lblDezeseis","txtDezeseis","none");
-         changeLabelAndText("lblQuinze","txtQuinze","inline");
-         break; 
-       } 
+        mtz.sort();
+        return mtz;
     }
 
+    Array.prototype.pushArray = function(arr) {
+      this.push.apply(this, arr);
+  };
 
-    function changeLabelAndText(lbl,txt,display){
-      document.getElementById(txt).style.display = display;  
-      document.getElementById(lbl).style.display = display;  
+    function resetGenerate(){
+      for(var p=0; p<componentesEditable.length; p++){
+        componentesEditable[p].style.borderColor = "red"; 
+        componentesEditable[p].style.color = "black";
+        componentesEditable[p].style.backgroundColor = "white"; 
+      }
+      numberUser = [];
+      componentsChangeColor = [];
     }
 
-    function showComponentesEditable(array){
-        for(var p=0; p<componentesEditable.length; p++){
-            if(componentesEditable[p].value.length == 0){
-            componentesEditable[p].value = array[p]; 
-            }
+    function caseHaveNumber(value){
+      for(var o=0; o<numberUser.length; o++){
+         if(numberUser[o] == value){
+          return true;   
+         }
+      }
+      return false;
+    }
+
+    function validationIfHaveNumber(array, value){
+      for(var z=0; z<array.length; z++){
+        if(array[z] == value){
+        return true;
+        }
+      }
+      return false;
+    }
+    
+
+    function clearComponentes(){
+        for(var p=0; p<componentes.length; p++){
+            componentes[p].value ="";
          }
     }
     
-   
-    function clearComponentesEditable(){
-        for(var p=0; p<componentesEditable.length; p++){
-            componentesEditable[p].value ="";
-         }
-    }
-
-    function clearComponentsEditable(valor){
-        switch(valor){
-          case 17: //18 
-          changeLabelAndText("lblDezoitoEditado","txtDezoitoEditado","inline");
-          changeLabelAndText("lblDezeseteEditado","txtDezeseteEditado","inline");
-          changeLabelAndText("lblDezeseisEditado","txtDezeseisEditado","inline");
-          changeLabelAndText("lblQuinzeEditado","txtQuinzeEditado","inline");
-          break; 
- 
-          case 16: //17
-          changeLabelAndText("lblDezoitoEditado","txtDezoitoEditado","none");
-          changeLabelAndText("lblDezeseteEditado","txtDezeseteEditado","inline");
-          changeLabelAndText("lblDezeseisEditado","txtDezeseisEditado","inline");
-          changeLabelAndText("lblQuinzeEditado","txtQuinzeEditado","inline");
-          break;
- 
-          case 15: //16
-          changeLabelAndText("lblDezoitoEditado","txtDezoitoEditado","none");
-          changeLabelAndText("lblDezeseteEditado","txtDezeseteEditado","none");
-          changeLabelAndText("lblDezeseisEditado","txtDezeseisEditado","inline");
-          changeLabelAndText("lblQuinzeEditado","txtQuinzeEditado","inline");
-          break;
- 
-          case 14: //15
-          changeLabelAndText("lblDezoitoEditado","txtDezoitoEditado","none");
-          changeLabelAndText("lblDezeseteEditado","txtDezeseteEditado","none");
-          changeLabelAndText("lblDezeseisEditado","txtDezeseisEditado","none");
-          changeLabelAndText("lblQuinzeEditado","txtQuinzeEditado","inline");
-          break; 
-        } 
-     }
-     
      function changeBorderColorAndInserValue(componente){
 
      var getComponente = document.getElementById(componente);
      
        if(validationIfExistComponente(componente)){  
+        if(change == 1){
+          numberUser = [];
+          numberUser.pushArray(backupNumberUser);
+          change = 0;
+         }
         componentsChangeColor.splice(removeIndexChangeColor(componente),1);
         numberUser.splice(removeIndexNumber(getComponente.value),1);
         getComponente.style.borderColor = "red"; 
         getComponente.style.color = "black";
         getComponente.style.backgroundColor = "white"; 
        }else{
+        if(change == 1){
+          numberUser = [];
+          numberUser.pushArray(backupNumberUser);
+          change = 0;
+         }
         componentsChangeColor.push(componente);
         numberUser.push(getComponente.value);
         getComponente.style.borderColor = "black";
@@ -236,8 +243,7 @@ function generateRan(valor, tipoValor){
          if(numberUser.length != 18 || validationIfExistComponente(componente)){
            changeBorderColorAndInserValue(componente);
          }else{
-          console.log("Full number !"); 
-          console.log(numberUser);  
+          alert("Numero maximo alcançado!");  
          }
          
      }

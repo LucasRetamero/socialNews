@@ -219,10 +219,10 @@
         </div>
         <br>
     
-        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17,1)">Gerar 18 numeros</button>
-        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(16,1)">Gerar 17 numeros</button> 
-        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(15,1)">Gerar 16 numeros</button> 
-        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(14,1)">Gerar 15 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(17)">Gerar 18 numeros</button>
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(16)">Gerar 17 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(15)">Gerar 16 numeros</button> 
+        <button class="btn btn-primary btn-lg block font-weight-bold" onClick="generateRan(14)">Gerar 15 numeros</button> 
          
 
          <br>
