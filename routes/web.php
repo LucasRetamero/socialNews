@@ -17,3 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/loto', 'lotoFacilController@home')->name('home.loto');
+
+Route::post('/loto/checkGame', 'lotoFacilController@lotoPage')->name('home.loto.checkGame');

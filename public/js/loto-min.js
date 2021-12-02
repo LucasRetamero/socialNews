@@ -146,6 +146,7 @@ function generateRan(valor){
     Array.prototype.pushArray = function(arr) {
       this.push.apply(this, arr);
   };
+    
 
     function resetGenerate(){
       for(var p=0; p<componentesEditable.length; p++){
