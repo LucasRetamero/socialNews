@@ -76,35 +76,38 @@
             }
             .numberComparation{
             font-weight: bold;
+            width: 50px;
             }
     
         </style>
-
+      
     </head>
     <body>
-       
     <div class="content">
-                <div class="h1">
-                    Valores mais saem 
+                <div class="h1 text-white" style="background-color:  #6f42c1; ">
+                    Números mais sorteados 
                 </div>
            </div>
 
-           <table class="table">
-  <thead>
+  <center><table class="table w-50">
+  @foreach(collect($howMany)->chunk(5) as $chunk)
+    <thead class="text-white" style="background-color: #6f42c1;">
     <tr>
-    @foreach($howMany as $key => $itens)
-      <th scope="col">{{ $key }}</th>
+     @foreach($chunk as $key => $itens)
+       <th scope="col">{{ $key }}</th>
     @endforeach
     </tr>
-  </thead>
+   </thead>
   <tbody>
-    <tr>
-     @foreach($howMany as $item)
-      <th scope="row">{{ $item }}</th>
-      @endforeach
+  <tr>
+     @foreach($chunk as $itens)
+       <td style="font-weight: bold;">{{ $itens }} </td>
+    @endforeach
     </tr>
     </tbody>
-    </table>
+    @endforeach
+    </table></center>
+
 
     @if(isset($points))
     <!-- inicio -->
@@ -127,7 +130,7 @@
   </thead>
   <tbody>
     <tr>
-     @if($points == 15)
+     @if($points >= 15)
     <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/></td>
     @else
     <td><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
@@ -165,142 +168,43 @@
 
            
      <div class="content">
-                <div class="h1">
-                    Compare com todos os jogos  
+                <div class="h1 text-white" style="background-color:  #6f42c1; ">
+                    Compare seu jogo   
                 </div>
            </div>
 
+<center><table>
+ <form method="post" action="{{ route('home.loto.checkGame') }}">        
+ <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />    
+<tr>
+<th><input type="text" class="form-control numberComparation" name="bolaoUm" placeholder="01"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDois" placeholder="02"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoTres" placeholder="03"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoOuatro" placeholder="04"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoCinco" placeholder="05"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoSeis" placeholder="06"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoSete" placeholder="07"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoOito" placeholder="08"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoNove" placeholder="09"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDez" placeholder="10"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoOnze" placeholder="11"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDoze" placeholder="12"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoTreze" placeholder="13"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoQuatorze" placeholder="14"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoQuinze" placeholder="15"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDezesseis" placeholder="16"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDezessete" placeholder="17"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDezoito" placeholder="18"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoDezenove" placeholder="19"/></th>
+<th><input type="text" class="form-control numberComparation" name="bolaoVinte" placeholder="20"/></th>
+</tr>
+ 
+ <tr>
+  <input type="submit" class="btn btn-primary btn-lg btn-block" name="btnAction" value="Verificar Jogo"/>
+</tr>
 
-
-           <table class="table">
-  <tbody>
-    <tr>
-     <form method="post" action="{{ route('home.loto.checkGame') }}">        
-     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-
-     <td>
-      <label>01</label>
-      <input type="text" class="form-control numberComparation" name="bolaoUm" placeholder="01"/>
-      </td>
-     
-      <td>
-       <label>02</label>
-       <input type="text" class="form-control numberComparation" name="bolaoDois" placeholder="02"/>
-      </td>
-
-      <td>
-       <label>03</label>
-       <input type="text" class="form-control numberComparation" name="bolaoTres" placeholder="03"/>
-      </td>
-
-      <td>
-       <label>04</label>
-       <input type="text" class="form-control numberComparation" name="bolaoOuatro" placeholder="04"/>
-      </td>
-
-       <td>
-        <label>05</label>
-        <input type="text" class="form-control numberComparation" name="bolaoCinco" placeholder="05"/>
-       </td>
-      </tr>
-
-     <tr>
-      <td>
-       <label>06</label>
-       <input type="text" class="form-control numberComparation" name="bolaoSeis" placeholder="06">
-      </td>
-
-      <td>
-       <label>07</label>
-       <input type="text" class="form-control numberComparation" name="bolaoSete" placeholder="07">
-      </td>
-
-      <td>
-       <label>08</label>
-       <input type="text" class="form-control numberComparation" name="bolaoOito" placeholder="08"/>
-     </td>
-
-     <td>
-      <label>09</label>
-      <input type="text" class="form-control numberComparation" name="bolaoNove" placeholder="09">
-     </td>
-
-     <td>
-      <label>10</label>
-      <input type="text" class="form-control numberComparation" name="bolaoDez" placeholder="10">
-     </td>
-     </tr>
-
-      <tr>
-
-      <td>
-       <label>11</label>
-       <input type="text" class="form-control numberComparation" name="bolaoOnze" placeholder="11">
-      </td>
-
-      <td>
-       <label>12</label>
-       <input type="text" class="form-control numberComparation" name="bolaoDoze" placeholder="12">
-      </td>
-
-      <td>
-       <label>13</label>
-       <input type="text" class="form-control numberComparation" name="bolaoTreze" placeholder="13">
-      </td>
-
-      <td>
-       <label>14</label>
-       <input type="text" class="form-control numberComparation" name="bolaoQuatorze" placeholder="14">
-      </td>
-
-      <td>
-       <label>15</label>
-       <input type="text" class="form-control numberComparation" name="bolaoQuinze" placeholder="15">
-      </td>
-
-     </tr>
-
-     <tr>
-      
-      <td>
-       <label>16</label>
-       <input type="text" class="form-control numberComparation" name="bolaoDezesseis" placeholder="16">
-      </td>
-
-      <td>
-       <label>17</label>
-       <input type="text" class="form-control numberComparation" name="bolaoDezessete" placeholder="17">
-      </td>
-
-      <td>
-       <label>18</label>
-       <input type="text" class="form-control numberComparation" name="bolaoDezoito" placeholder="18">
-      </td>
-
-      <td>
-       <label>19</label>
-       <input type="text" class="form-control numberComparation" name="bolaoDezenove" placeholder="19">
-      </td>
-
-      <td>
-       <label>20</label>
-       <input type="text" class="form-control numberComparation" name="bolaoVinte" placeholder="20">
-      </td>
-
-     </tr>
-
-     <tr>
-      <td>
-       <input type="submit" class="btn btn-primary btn-lg btn-block" name="btnAction" value="Verificar Jogo">
-      </td>
-     </tr>
-
-
-   </form>
-    </tbody>
-    </table>
-
-
+</form>
+</table></center>
 
           <div class="content">
                 <div class="h1">
