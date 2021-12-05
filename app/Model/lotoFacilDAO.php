@@ -49,103 +49,239 @@ class lotoFacilDAO extends Model
 
   }
 
-  public function getCaseHaveValue($componente, $value){
+  public function getHowManyByConcurso($value, $concursoValue){
+    return lotoFacilDAO::where('bolaoUm', $value)
+                        ->orwhere('bolaoDois', $value)
+                        ->orwhere('bolaoTres', $value)
+                        ->orwhere('bolaoOuatro', $value)
+                        ->orwhere('bolaoCinco', $value)
+                        ->orwhere('bolaoSeis', $value)
+                        ->orwhere('bolaoSete', $value)
+                        ->orwhere('bolaoOito', $value)
+                        ->orwhere('bolaoNove', $value)
+                        ->orwhere('bolaoDez', $value)
+                        ->orwhere('bolaoOnze', $value)
+                        ->orwhere('bolaoDoze', $value)
+                        ->orwhere('bolaoTreze', $value)
+                        ->orwhere('bolaoQuatorze', $value)
+                        ->orwhere('bolaoQuinze', $value)
+                        ->where('concurso', $concursoValue)
+                        ->count();
+
+}
+
+  public function getAllConcursos(){
+    return lotoFacilDAO::orderBy('concurso',  'desc')
+                         ->get();
+  }
+
+  public function getOneConcurso($value){
+    if($value != "all"){
+    return lotoFacilDAO::where('concurso', $value)
+                         ->get();
+    }
+  }
+
+  public function getCaseHaveValue($componente, $value, $concurso){
     switch($componente){
     case 'bolaoUm':
-    return lotoFacilDAO::where('bolaoUm', $value)
+
+     if($concurso == "all"){
+      return lotoFacilDAO::where('bolaoUm', $value)
                         ->count();
+     }else{
+      return lotoFacilDAO::where('bolaoUm', $value)
+                        ->where('concurso', $concurso)
+                        ->count();
+     } 
+
     break;
 
     case 'bolaoDois':
-    return lotoFacilDAO::where('bolaoDois', $value)
+
+      if($concurso == "all"){
+       return lotoFacilDAO::where('bolaoDois', $value)
                        ->count();
+      }else{
+        return lotoFacilDAO::where('bolaoDois', $value)
+                        ->where('concurso', $concurso)
+                        ->count();
+        }
+
     break;
     
     case 'bolaoTres':
-    return lotoFacilDAO::where('bolaoTres', $value)
+
+     if($concurso == "all"){
+        return lotoFacilDAO::where('bolaoTres', $value)
                         ->count();
+       }else{
+        return lotoFacilDAO::where('bolaoTres', $value)
+                              ->where('concurso', $concurso)
+                              ->count();
+       }
+
     break;
 
     case 'bolaoOuatro':
-    return lotoFacilDAO::where('bolaoOuatro', $value)
+
+     if($concurso == "all"){
+      return lotoFacilDAO::where('bolaoOuatro', $value)
                         ->count();
+     }else{
+       return lotoFacilDAO::where('bolaoOuatro', $value)
+                            ->where('concurso', $concurso)
+                            ->count();
+      }
+
     break;
 
     case 'bolaoCinco':
-    return lotoFacilDAO::where('bolaoCinco', $value)
+
+     if($concurso == "all"){
+      return lotoFacilDAO::where('bolaoCinco', $value)
                         ->count();
+        }else{
+          return lotoFacilDAO::where('bolaoCinco', $value)
+                                ->where('concurso', $concurso)
+                                ->count();
+        }
     break;
 
     case 'bolaoSeis':
-    return lotoFacilDAO::where('bolaoSeis', $value)
+
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoSeis', $value)
                         ->count();
+      }else{
+       return lotoFacilDAO::where('bolaoSeis', $value)
+                            ->where('concurso', $concurso)
+                             ->count();
+       }
     break;
 
     case 'bolaoSete':
-    return lotoFacilDAO::where('bolaoSete', $value)
+    
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoSete', $value)
                         ->count();
+        }else{
+          return lotoFacilDAO::where('bolaoSete', $value)
+                                 ->where('concurso', $concurso)
+                                 ->count();
+         }
     break;
 
     case 'bolaoOito':
-    return lotoFacilDAO::where('bolaoOito', $value)
+
+    if($concurso == "all"){
+      return lotoFacilDAO::where('bolaoOito', $value)
                         ->count();
+        }else{
+      return lotoFacilDAO::where('bolaoOito', $value)
+                           ->where('concurso', $concurso)
+                           ->count();
+        }
+                        
     break;
 
     case 'bolaoNove':
-    return lotoFacilDAO::where('bolaoNove', $value)
+
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoNove', $value)
                         ->count();
+       }else{
+         return lotoFacilDAO::where('bolaoNove', $value)
+                               ->where('concurso', $concurso)
+                                ->count();
+        }
     break;
 
     case 'bolaoDez':
-    return lotoFacilDAO::where('bolaoDez', $value)
+
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoDez', $value)
                         ->count();
+       }else{
+      return lotoFacilDAO::where('bolaoDez', $value)
+                              ->where('concurso', $concurso)
+                              ->count();
+         }
     break;
 
     case 'bolaoOnze':
-    return lotoFacilDAO::where('bolaoOnze', $value)
+
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoOnze', $value)
                         ->count();
+       }else{
+        return lotoFacilDAO::where('bolaoOnze', $value)
+                            ->where('concurso', $concurso)
+                            ->count();
+        }
     break;
 
     case 'bolaoDoze':
-    return lotoFacilDAO::where('bolaoDoze', $value)
+
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoDoze', $value)
                         ->count();
+        }else{
+         return lotoFacilDAO::where('bolaoDoze', $value)
+                                ->where('concurso', $concurso)
+                                 ->count();
+          }
     break;
 
     case 'bolaoTreze':
-    return lotoFacilDAO::where('bolaoTreze', $value)
+   
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoTreze', $value)
                         ->count();
+       }else{
+     return lotoFacilDAO::where('bolaoTreze', $value)
+                           ->where('concurso', $concurso)
+                           ->count();
+       }
     break;
 
     case 'bolaoQuatorze':
-    return lotoFacilDAO::where('bolaoQuatorze', $value)
+   
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoQuatorze', $value)
                         ->count();
+      }else{
+       return lotoFacilDAO::where('bolaoQuatorze', $value)
+                           ->where('concurso', $concurso)
+                           ->count();
+        }
     break;
 
     case 'bolaoQuinze':
-    return lotoFacilDAO::where('bolaoQuinze', $value)
+    
+    if($concurso == "all"){
+     return lotoFacilDAO::where('bolaoQuinze', $value)
                         ->count();
+      }else{
+     return lotoFacilDAO::where('bolaoQuinze', $value)
+                           ->where('concurso', $concurso)
+                           ->count();
+       }
     break;
 
     case 'bolaoDezesseis':
-    return $this->getHowMany($value);
-    break;
-
     case 'bolaoDezessete':
-    return $this->getHowMany($value);
-    break;
-
     case 'bolaoDezoito':
-    return $this->getHowMany($value);
-    break;
-
     case 'bolaoDezenove':
-    return $this->getHowMany($value);
-    break;
-
     case 'bolaoVinte':
-    return $this->getHowMany($value);
+     if($concurso == "all"){
+      return $this->getHowMany($value);
+      }else{
+      return $this->getHowManyByConcurso($value, $concurso);
+      }
     break;
    }
   }
+
 
 }
