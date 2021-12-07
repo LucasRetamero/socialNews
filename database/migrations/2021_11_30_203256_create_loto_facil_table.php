@@ -16,21 +16,21 @@ class CreateLotoFacilTable extends Migration
         Schema::create('loto_facil', function (Blueprint $table) {
             $table->id();
             $table->string('concurso');
-            $table->string('bolaoUm');
-            $table->string('bolaoDois');
-            $table->string('bolaoTres');
-            $table->string('bolaoOuatro');
-            $table->string('bolaoCinco');
-            $table->string('bolaoSeis');
-            $table->string('bolaoSete');
-            $table->string('bolaoOito');
-            $table->string('bolaoNove');
-            $table->string('bolaoDez');
-            $table->string('bolaoOnze');
-            $table->string('bolaoDoze');
-            $table->string('bolaoTreze');
-            $table->string('bolaoQuatorze');
-            $table->string('bolaoQuinze');
+            $table->string('bolaUm');
+            $table->string('bolaDois');
+            $table->string('bolaTres');
+            $table->string('bolaQuatro');
+            $table->string('bolaCinco');
+            $table->string('bolaSeis');
+            $table->string('bolaSete');
+            $table->string('bolaOito');
+            $table->string('bolaNove');
+            $table->string('bolaDez');
+            $table->string('bolaOnze');
+            $table->string('bolaDoze');
+            $table->string('bolaTreze');
+            $table->string('bolaQuatorze');
+            $table->string('bolaQuinze');
             $table->timestamps();
         });
     }

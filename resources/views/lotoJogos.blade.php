@@ -153,38 +153,42 @@
   </thead>
   <tbody>
     <tr>
-     @if($points >= 15)
-    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/></td>
+    
+     @if($fiftheenPoints != 0)
+    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/><br> {{ $fiftheenPoints }}</td>
     @else
     <td><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
     @endif
 
-    @if($points == 14)
-    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/></td>
+    @if($fortheenPoints != 0)
+    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/><br>{{ $fortheenPoints }}</td>
     @else
     <td><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
     @endif
 
-    @if($points == 13)
-    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/></td>
+     @if($thirteenPoints != 0)
+    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px" style="font-weight: bold;"/><br> {{ $thirteenPoints }}</td>
     @else
     <td><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
     @endif
 
-   @if($points == 12)
-    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/></td>
+     @if($twelvePoints != 0)
+    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/><br> {{ $twelvePoints }}</td>
     @else
     <td><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
     @endif
 
-    @if($points == 11)
-    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/></td>
+
+
+    @if($elevenPoints != 0)
+    <td><img src="{{ asset('img/iconRigth.png') }}" width="30px" height="30px"/><br>{{ $elevenPoints }}</td>
     @else
     <td><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
     @endif
+
 
     @if($numberConcurso == "all")
-    <td style="font-weight: bold;">Todos</td>
+    <td style="font-weight: bold;"> {{ $concurso }}</td>
     @else
     <td style="font-weight: bold;">{{ $numberConcurso }}</td>
     @endif
@@ -275,21 +279,21 @@
      <tbody>
       <tr style="font-weight: bold;">
       @foreach($valuesConcurso as $itens)
-      <td>{{ $itens->bolaoUm }}</td>
-      <td>{{ $itens->bolaoDois }}</td>
-      <td>{{ $itens->bolaoTres }}</td>
-      <td>{{ $itens->bolaoOuatro }}</td>
-      <td>{{ $itens->bolaoCinco }}</td>
-      <td>{{ $itens->bolaoSeis }}</td>
-      <td>{{ $itens->bolaoSete }}</td>
-      <td>{{ $itens->bolaoOito }}</td>
-      <td>{{ $itens->bolaoNove }}</td>
-      <td>{{ $itens->bolaoDez }}</td>
-      <td>{{ $itens->bolaoOnze }}</td>
-      <td>{{ $itens->bolaoDoze }}</td>
-      <td>{{ $itens->bolaoTreze }}</td>
-      <td>{{ $itens->bolaoQuatorze }}</td>
-      <td>{{ $itens->bolaoQuinze }}</td>
+      <td>{{ $itens->bolaUm }}</td>
+      <td>{{ $itens->bolaDois }}</td>
+      <td>{{ $itens->bolaTres }}</td>
+      <td>{{ $itens->bolaQuatro }}</td>
+      <td>{{ $itens->bolaCinco }}</td>
+      <td>{{ $itens->bolaSeis }}</td>
+      <td>{{ $itens->bolaSete }}</td>
+      <td>{{ $itens->bolaOito }}</td>
+      <td>{{ $itens->bolaNove }}</td>
+      <td>{{ $itens->bolaDez }}</td>
+      <td>{{ $itens->bolaOnze }}</td>
+      <td>{{ $itens->bolaDoze }}</td>
+      <td>{{ $itens->bolaTreze }}</td>
+      <td>{{ $itens->bolaQuatorze }}</td>
+      <td>{{ $itens->bolaQuinze }}</td>
       @endforeach
       </tr>
      </tbody>
@@ -428,21 +432,21 @@
   @foreach($date as $item)
     <tr>
       <th scope="row">{{ $item->concurso }}</th>
-      <td scope="row">{{ $item->bolaoUm }}</td>
-      <td scope="row">{{ $item->bolaoDois }}</td>
-      <td scope="row">{{ $item->bolaoTres }}</td>
-      <td scope="row">{{ $item->bolaoOuatro }}</td> 
-      <td scope="row">{{ $item->bolaoCinco }}</td>
-      <td scope="row">{{ $item->bolaoSeis }}</td>
-      <td scope="row">{{ $item->bolaoSete }}</td>
-      <td scope="row">{{ $item->bolaoOito }}</td>
-      <td scope="row">{{ $item->bolaoNove }}</td>
-      <td scope="row">{{ $item->bolaoDez }}</td>
-      <td scope="row">{{ $item->bolaoOnze }}</td>
-      <td scope="row">{{ $item->bolaoDoze }}</td>
-      <td scope="row">{{ $item->bolaoTreze }}</td>
-      <td scope="row">{{ $item->bolaoQuatorze }}</td>
-      <td scope="row">{{ $item->bolaoQuinze }}</td>
+      <td scope="row">{{ $item->bolaUm }}</td>
+      <td scope="row">{{ $item->bolaDois }}</td>
+      <td scope="row">{{ $item->bolaTres }}</td>
+      <td scope="row">{{ $item->bolaQuatro }}</td> 
+      <td scope="row">{{ $item->bolaCinco }}</td>
+      <td scope="row">{{ $item->bolaSeis }}</td>
+      <td scope="row">{{ $item->bolaSete }}</td>
+      <td scope="row">{{ $item->bolaOito }}</td>
+      <td scope="row">{{ $item->bolaNove }}</td>
+      <td scope="row">{{ $item->bolaDez }}</td>
+      <td scope="row">{{ $item->bolaOnze }}</td>
+      <td scope="row">{{ $item->bolaDoze }}</td>
+      <td scope="row">{{ $item->bolaTreze }}</td>
+      <td scope="row">{{ $item->bolaQuatorze }}</td>
+      <td scope="row">{{ $item->bolaQuinze }}</td>
     </tr>
  @endforeach
     </tbody>
