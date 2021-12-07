@@ -200,43 +200,29 @@
      
      <center> 
       <div class="h1 text-white" style="background-color:  #6f42c1; ">
-                    Números escolhidos   
+                    Números escolhidos  
                 </div>
      </center>
-    <table class="table">
-     <thead>
-      <tr style="background-color:  #6f42c1;color: #FFF;">
-       <th>01</th>
-       <th>02</th>
-       <th>03</th>
-       <th>04</th>
-       <th>05</th>
-       <th>06</th>
-       <th>07</th>
-       <th>08</th>
-       <th>09</th>
-       <th>10</th>
-       <th>11</th>
-       <th>12</th>
-       <th>13</th>
-       <th>14</th>
-       <th>15</th>
-       <th>16</th>
-       <th>17</th>
-       <th>18</th>
-       <th>19</th>
-       <th>20</th>
-      </tr>
-     </thead>
-     <tbody>
-      <tr style="font-weight: bold;">
-      @foreach($numberByUser as $itens)
-      <td>{{ $itens }}</td>
-      @endforeach
-      </tr>
-     </tbody>
-    </table>
 
+    <center><table class="table w-50">
+  @foreach(collect($numberByUser)->chunk(5) as $chunk)
+    <thead class="text-white" style="background-color: #6f42c1;">
+    <tr>
+     @foreach($chunk as $key => $itens)
+       <th scope="col">{{ $key }}</th>
+    @endforeach
+    </tr>
+   </thead>
+  <tbody>
+  <tr>
+     @foreach($chunk as $itens)
+       <td style="font-weight: bold;">{{ $itens }} </td>
+    @endforeach
+    </tr>
+    </tbody>
+    @endforeach
+    </table></center>
+    
     <br>
    
     @if($numberConcurso != "all")
@@ -352,18 +338,18 @@
 
  <center><table>  
  <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('1')">01</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('2')">02</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('3')">03</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('4')">04</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('5')">05</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('01')">01</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('02')">02</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('03')">03</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('04')">04</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('05')">05</button></th>
  </tr>
 
   <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('6')">06</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('7')">07</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('8')">08</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('9')">09</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('06')">06</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('07')">07</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('08')">08</button></th>
+  <th><button type="button" class="btnNumber" onClick="addValue('09')">09</button></th>
   <th><button type="button" class="btnNumber" onClick="addValue('10')">10</button></th>
  </tr>
 
@@ -453,13 +439,14 @@
     </table>
 
       <script type="text/javascript">
+
        var components = [ "id_bolaoUm","id_bolaoDois","id_bolaoTres","id_bolaoOuatro","id_bolaoCinco",
                           "id_bolaoSeis", "id_bolaoSete", "id_bolaoOito", "id_bolaoNove", "id_bolaoDez",
                           "id_bolaoOnze", "id_bolaoDoze", "id_bolaoTreze", "id_bolaoQuatorze", "id_bolaoQuinze",
                           "id_bolaoDezesseis", "id_bolaoDezessete", "id_bolaoDezoito", "id_bolaoDezenove", "id_bolaoVinte"];
 
       var selectedComponent,showHide=false;
- 
+
     function start(){
     selectedComponent= "id_bolaoUm";
     changeColorComponent();

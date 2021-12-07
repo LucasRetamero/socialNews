@@ -31,8 +31,6 @@ class lotoFacilController extends Controller
     }
 
     public function lotoPage(Request $request){
-     
-      $this->getArrayWithComp();
       $this->checkAllPoints($request);
       $this->getHowManyValues();
       $this->addValuesOnArray($request);
@@ -76,63 +74,83 @@ class lotoFacilController extends Controller
           
           //1
           switch($itens->bolaUm){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
              $lblUm = 1;
              break;
 
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblUm = 1;
             break;
 
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblUm = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblUm = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblUm = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblUm = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblUm = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblUm = 1;
             break;
 
@@ -143,63 +161,83 @@ class lotoFacilController extends Controller
 
            //2
            switch($itens->bolaDois){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblDois = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblDois = 1;
             break;
 
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblDois = 1;
+            break;
+ 
+            case intval($request->input('bolaoDezesseis')):
+            $lblDois = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblDois = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblDois = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblDois = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblDois = 1;
             break;
 
@@ -210,63 +248,83 @@ class lotoFacilController extends Controller
 
            //3
            switch($itens->bolaTres){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblTres = 1;
             break;
 
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblTres = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblTres = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblTres = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblTres = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblTres = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblTres = 1;
             break;
 
@@ -277,63 +335,83 @@ class lotoFacilController extends Controller
 
           //4
           switch($itens->bolaQuatro){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblQuatro = 1;
             break;
 
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblQuatro = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblQuatro = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblQuatro = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblQuatro = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblQuatro = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblQuatro = 1;
             break;
 
@@ -345,63 +423,83 @@ class lotoFacilController extends Controller
 
           //5
           switch($itens->bolaCinco){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblCinco = 1;
             break;
 
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblCinco = 1;
             break;
 
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblCinco = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblCinco = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblCinco = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblCinco = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblCinco = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblCinco = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblCinco = 1;
             break;
             
@@ -413,63 +511,83 @@ class lotoFacilController extends Controller
 
           //6
           switch($itens->bolaSeis){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblSeis = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblSeis = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblSeis = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblSeis = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblSeis = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblSeis = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblSeis = 1;
             break;
             
@@ -481,63 +599,83 @@ class lotoFacilController extends Controller
 
            //7
            switch($itens->bolaSete){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblSete = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblSete = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblSete = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblSete = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblSete = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblSete = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblSete = 1;
             break;
             
@@ -549,63 +687,83 @@ class lotoFacilController extends Controller
 
           //8
           switch($itens->bolaOito){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblOito = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblOito = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblOito = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblOito = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblOito = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblOito = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblOito = 1;
             break;
             
@@ -617,63 +775,83 @@ class lotoFacilController extends Controller
 
           //9
           switch($itens->bolaNove){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblNove = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblNove = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblNove = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblNove = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblNove = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblNove = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblNove = 1;
             break;
             
@@ -685,63 +863,83 @@ class lotoFacilController extends Controller
 
            //10
            switch($itens->bolaDez){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblDez = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblDez = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblDez = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblDez = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblDez = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblDez = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblDez = 1;
             break;
             
@@ -753,63 +951,83 @@ class lotoFacilController extends Controller
            
           //11
           switch($itens->bolaOnze){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblOnze = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblOnze = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblOnze = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblOnze = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblOnze = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblOnze = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblOnze = 1;
             break;
             
@@ -821,63 +1039,83 @@ class lotoFacilController extends Controller
 
           //12
           switch($itens->bolaDoze){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblDoze = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblDoze = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblDoze = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblDoze = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblDoze = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblDoze = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblDoze = 1;
             break;
             
@@ -889,63 +1127,83 @@ class lotoFacilController extends Controller
 
            //13
            switch($itens->bolaTreze){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblTreze = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblTreze = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblTreze = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblTreze = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblTreze = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblTreze = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblTreze = 1;
             break;
             
@@ -957,63 +1215,83 @@ class lotoFacilController extends Controller
 
            //14
            switch($itens->bolaQuatorze){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblQuatorze = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblQuatorze = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblQuatorze = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblQuatorze = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblQuatorze = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblQuatorze = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblQuatorze = 1;
             break;
             
@@ -1026,63 +1304,83 @@ class lotoFacilController extends Controller
           
            //15
            switch($itens->bolaQuinze){
-            case $request->input('bolaoUm'):
+            case intval($request->input('bolaoUm')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoDois'):
+            case intval($request->input('bolaoDois')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoTres'):
+            case intval($request->input('bolaoTres')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoOuatro'):
+            case intval($request->input('bolaoOuatro')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoCinco'):
+            case intval($request->input('bolaoCinco')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoSeis'):
+            case intval($request->input('bolaoSeis')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoSete'):
+            case intval($request->input('bolaoSete')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoOito'):
+            case intval($request->input('bolaoOito')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoNove'):
+            case intval($request->input('bolaoNove')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoDez'):
+            case intval($request->input('bolaoDez')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoOnze'):
+            case intval($request->input('bolaoOnze')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoDoze'):
+            case intval($request->input('bolaoDoze')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoTreze'):
+            case intval($request->input('bolaoTreze')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoQuatorze'):
+            case intval($request->input('bolaoQuatorze')):
             $lblQuinze = 1;
             break;
             
-            case $request->input('bolaoQuinze'):
+            case intval($request->input('bolaoQuinze')):
+            $lblQuinze = 1;
+            break;
+
+            case intval($request->input('bolaoDezesseis')):
+            $lblQuinze = 1;
+            break;
+
+            case intval($request->input('bolaoDezessete')):
+            $lblQuinze = 1;
+            break;
+
+            case intval($request->input('bolaoDezoito')):
+            $lblQuinze = 1;
+            break;
+
+            case intval($request->input('bolaoDezenove')):
+            $lblQuinze = 1;
+            break;
+
+            case intval($request->input('bolaoVinte')):
             $lblQuinze = 1;
             break;
             
@@ -1121,10 +1419,10 @@ class lotoFacilController extends Controller
 
  
     public function addValuesOnArray(Request $request){
-     $this->numberChooseUser = [];
-      for($o = 0; $o<sizeof($this->formsNumber); $o++){
-       array_push($this->numberChooseUser,$request->input($this->formsNumber[$o]));
-      }
+     $this->numberChooseUser = [ 1 => $request->input("bolaoUm"), 2 => $request->input("bolaoDois"), 3 => $request->input("bolaoTres"), 4 => $request->input("bolaoOuatro"), 5 => $request->input("bolaoCinco"),
+                                 6 => $request->input("bolaoSeis"), 7 => $request->input("bolaoSete"), 8 => $request->input("bolaoOito"), 9 => $request->input("bolaoNove"), 10 => $request->input("bolaoDez"),
+                                 11 => $request->input("bolaoOnze"), 12 => $request->input("bolaoDoze"), 13 => $request->input("bolaoTreze"), 14 => $request->input("bolaoQuatorze"), 15 => $request->input("bolaoQuinze"),
+                                 16 => $request->input("bolaoDezesseis"), 17 => $request->input("bolaoDezessete"), 18 => $request->input("bolaoDezoito"), 19 => $request->input("bolaoDezenove"), 20 => $request->input("bolaoVinte")];
     return $this->numberChooseUser;
     }
 
