@@ -1419,10 +1419,10 @@ class lotoFacilController extends Controller
 
  
     public function addValuesOnArray(Request $request){
-     $this->numberChooseUser = [ 1 => $request->input("bolaoUm"), 2 => $request->input("bolaoDois"), 3 => $request->input("bolaoTres"), 4 => $request->input("bolaoOuatro"), 5 => $request->input("bolaoCinco"),
-                                 6 => $request->input("bolaoSeis"), 7 => $request->input("bolaoSete"), 8 => $request->input("bolaoOito"), 9 => $request->input("bolaoNove"), 10 => $request->input("bolaoDez"),
-                                 11 => $request->input("bolaoOnze"), 12 => $request->input("bolaoDoze"), 13 => $request->input("bolaoTreze"), 14 => $request->input("bolaoQuatorze"), 15 => $request->input("bolaoQuinze"),
-                                 16 => $request->input("bolaoDezesseis"), 17 => $request->input("bolaoDezessete"), 18 => $request->input("bolaoDezoito"), 19 => $request->input("bolaoDezenove"), 20 => $request->input("bolaoVinte")];
+     $this->numberChooseUser = [$request->input("bolaoUm"), $request->input("bolaoDois"), $request->input("bolaoTres"), $request->input("bolaoOuatro"), $request->input("bolaoCinco"),
+                                $request->input("bolaoSeis"), $request->input("bolaoSete"), $request->input("bolaoOito"), $request->input("bolaoNove"), $request->input("bolaoDez"),
+                                $request->input("bolaoOnze"), $request->input("bolaoDoze"), $request->input("bolaoTreze"), $request->input("bolaoQuatorze"), $request->input("bolaoQuinze"),
+                                $request->input("bolaoDezesseis"), $request->input("bolaoDezessete"), $request->input("bolaoDezoito"), $request->input("bolaoDezenove"), $request->input("bolaoVinte")];
     return $this->numberChooseUser;
     }
 

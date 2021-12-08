@@ -93,13 +93,9 @@
            }
 
            .btnNumber:hover{
-               width: 50px;
-               height: 50px;
-               background-color: #6f42c1;
-               font-weight:bold;
-               color:#FFF;
-               border-color: #6f42c1;
-               border-radius: 1px 1px 1px 1px;
+               background-color: #6f42c1 !important;
+               color:#FFF !important;
+               border-color: #6f42c1 !important;
            }
         </style>
       
@@ -296,96 +292,156 @@
                     Compare seu jogo   
                 </div>
            </div>
-    <form method="post" action="{{ route('home.loto.checkGame') }}">        
+
+<!-- Comparate o jogo -->
+<form method="post" action="{{ route('home.loto.checkGame') }}">        
     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />    
+           <div class="container">
+  <div class="row"><!-- row -->
 
-           <center><div class="form-group">
-    <label class="h4" style="font-weight: bold;">Selecione o concurso:</label>
-    <select  id="exampleFormControlSelect1" name="concurso">
-      <option value="all">Todos os concursos</option>
-      @foreach($allConcursos as $itens)
-      <option value="{{ $itens->concurso }}">Concurso: {{ $itens->concurso }}</option>
-      @endforeach
-    </select>
-  </div></center>
+    <div class="col">
+    @if(isset($numberByUser))
+      <table>
+      <!--foreach(numberByUser as $itens)-->
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoUm" name="bolaoUm" onClick="selection('id_bolaoUm')" value="{{ $numberByUser[0] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDois"  name="bolaoDois" onClick="selection('id_bolaoDois')" value="{{ $numberByUser[1] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoTres" name="bolaoTres" onClick="selection('id_bolaoTres')" value="{{ $numberByUser[2] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoOuatro" name="bolaoOuatro" onClick="selection('id_bolaoOuatro')" value="{{ $numberByUser[3] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoCinco" name="bolaoCinco" onClick="selection('id_bolaoCinco')" value="{{ $numberByUser[4] }}" readonly/></th>
+      </tr>
 
-<center><table>
-<tr>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoUm" name="bolaoUm" placeholder="01" onClick="selection('id_bolaoUm')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDois"  name="bolaoDois" placeholder="02"  onClick="selection('id_bolaoDois')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoTres" name="bolaoTres" placeholder="03" onClick="selection('id_bolaoTres')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoOuatro" name="bolaoOuatro" placeholder="04" onClick="selection('id_bolaoOuatro')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoCinco" name="bolaoCinco" placeholder="05" onClick="selection('id_bolaoCinco')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoSeis" name="bolaoSeis" placeholder="06" onClick="selection('id_bolaoSeis')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoSete" name="bolaoSete" placeholder="07" onClick="selection('id_bolaoSete')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoOito" name="bolaoOito" placeholder="08" onClick="selection('id_bolaoOito')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoNove" name="bolaoNove" placeholder="09" onClick="selection('id_bolaoNove')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDez" name="bolaoDez" placeholder="10"  onClick="selection('id_bolaoDez')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoOnze" name="bolaoOnze" placeholder="11" onClick="selection('id_bolaoOnze')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDoze" name="bolaoDoze" placeholder="12" onClick="selection('id_bolaoDoze')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoTreze" name="bolaoTreze" placeholder="13" onClick="selection('id_bolaoTreze')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoQuatorze" name="bolaoQuatorze" placeholder="14" onClick="selection('id_bolaoQuatorze')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoQuinze"  name="bolaoQuinze" placeholder="15" onClick="selection('id_bolaoQuinze')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDezesseis" name="bolaoDezesseis" placeholder="16" onClick="selection('id_bolaoDezesseis')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDezessete" name="bolaoDezessete" placeholder="17" onClick="selection('id_bolaoDezessete')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDezoito" name="bolaoDezoito" placeholder="18" onClick="selection('id_bolaoDezoito')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoDezenove" name="bolaoDezenove" placeholder="19" onClick="selection('id_bolaoDezenove')" readonly/></th>
-<th><input type="text" class="form-control numberComparation" id="id_bolaoVinte" name="bolaoVinte" placeholder="20" onClick="selection('id_bolaoVinte')" readonly/></th>
-</tr>
-</table></center>
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoSeis" name="bolaoSeis" onClick="selection('id_bolaoSeis')" value="{{ $numberByUser[5] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoSete" name="bolaoSete" onClick="selection('id_bolaoSete')" value="{{ $numberByUser[6] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoOito" name="bolaoOito" onClick="selection('id_bolaoOito')" value="{{ $numberByUser[7] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoNove" name="bolaoNove" onClick="selection('id_bolaoNove')" value="{{ $numberByUser[8] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDez" name="bolaoDez" onClick="selection('id_bolaoDez')"  value="{{ $numberByUser[9] }}" readonly/></th>
+      </tr>
 
-<br>
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoOnze" name="bolaoOnze"  onClick="selection('id_bolaoOnze')" value="{{ $numberByUser[10] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDoze" name="bolaoDoze"  onClick="selection('id_bolaoDoze')" value="{{ $numberByUser[11] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoTreze" name="bolaoTreze" onClick="selection('id_bolaoTreze')" value="{{ $numberByUser[12] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoQuatorze" name="bolaoQuatorze" onClick="selection('id_bolaoQuatorze')" value="{{ $numberByUser[13] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoQuinze"  name="bolaoQuinze" onClick="selection('id_bolaoQuinze')"  value="{{ $numberByUser[14] }}" readonly/></th>
+      </tr>
 
- <center><table>  
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezesseis" name="bolaoDezesseis"  onClick="selection('id_bolaoDezesseis')" value="{{ $numberByUser[15] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezessete" name="bolaoDezessete" onClick="selection('id_bolaoDezessete')" value="{{ $numberByUser[16] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezoito" name="bolaoDezoito" onClick="selection('id_bolaoDezoito')" value="{{ $numberByUser[17] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezenove" name="bolaoDezenove" onClick="selection('id_bolaoDezenove')" value="{{ $numberByUser[18] }}" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoVinte" name="bolaoVinte" onClick="selection('id_bolaoVinte')" value="{{ $numberByUser[19] }}" readonly/></th>
+      </tr>
+     <!--endforeach-->
+      </table><!--/table -->
+    @else
+      <table>
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoUm" name="bolaoUm" onClick="selection('id_bolaoUm')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDois"  name="bolaoDois" onClick="selection('id_bolaoDois')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoTres" name="bolaoTres" onClick="selection('id_bolaoTres')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoOuatro" name="bolaoOuatro" onClick="selection('id_bolaoOuatro')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoCinco" name="bolaoCinco" onClick="selection('id_bolaoCinco')" readonly/></th>
+      </tr>
+
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoSeis" name="bolaoSeis"  onClick="selection('id_bolaoSeis')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoSete" name="bolaoSete"  onClick="selection('id_bolaoSete')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoOito" name="bolaoOito"  onClick="selection('id_bolaoOito')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoNove" name="bolaoNove" onClick="selection('id_bolaoNove')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDez" name="bolaoDez"  onClick="selection('id_bolaoDez')" readonly/></th>
+      </tr>
+
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoOnze" name="bolaoOnze"  onClick="selection('id_bolaoOnze')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDoze" name="bolaoDoze"  onClick="selection('id_bolaoDoze')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoTreze" name="bolaoTreze" onClick="selection('id_bolaoTreze')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoQuatorze" name="bolaoQuatorze" onClick="selection('id_bolaoQuatorze')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoQuinze"  name="bolaoQuinze" onClick="selection('id_bolaoQuinze')" readonly/></th>
+      </tr>
+
+      <tr>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezesseis" name="bolaoDezesseis" onClick="selection('id_bolaoDezesseis')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezessete" name="bolaoDezessete" onClick="selection('id_bolaoDezessete')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezoito" name="bolaoDezoito"  onClick="selection('id_bolaoDezoito')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoDezenove" name="bolaoDezenove" onClick="selection('id_bolaoDezenove')" readonly/></th>
+       <th><input type="text" class="form-control numberComparation" id="id_bolaoVinte" name="bolaoVinte" onClick="selection('id_bolaoVinte')" readonly/></th>
+      </tr>
+
+      </table><!--/table -->
+      @endif
+    </div><!--/col-->
+
+    <div class="col">
+      
+    <table>  
  <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('01')">01</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('02')">02</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('03')">03</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('04')">04</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('05')">05</button></th>
+  <th><button type="button" id="btnUmNumber" class="btnNumber" onClick="addValue('01', 'btnUmNumber')">01</button></th>
+  <th><button type="button" id="btnDoisNumber" class="btnNumber" onClick="addValue('02', 'btnDoisNumber')">02</button></th>
+  <th><button type="button" id="btnTresNumber" class="btnNumber" onClick="addValue('03', 'btnTresNumber')">03</button></th>
+  <th><button type="button" id="btnQuatroNumber"class="btnNumber" onClick="addValue('04', 'btnQuatroNumber')">04</button></th>
+  <th><button type="button" id="btnCincoNumber" class="btnNumber" onClick="addValue('05', 'btnCincoNumber')">05</button></th>
  </tr>
 
   <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('06')">06</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('07')">07</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('08')">08</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('09')">09</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('10')">10</button></th>
+  <th><button type="button" id="btnSeisNumber" class="btnNumber" onClick="addValue('06', 'btnSeisNumber')">06</button></th>
+  <th><button type="button" id="btnSeteNumber" class="btnNumber" onClick="addValue('07', 'btnSeteNumber')">07</button></th>
+  <th><button type="button" id="btnOitoNumber" class="btnNumber" onClick="addValue('08', 'btnOitoNumber')">08</button></th>
+  <th><button type="button" id="btnNoveNumber" class="btnNumber" onClick="addValue('09', 'btnNoveNumber')">09</button></th>
+  <th><button type="button" id="btnDezNumber"  class="btnNumber" onClick="addValue('10', 'btnDezNumber')">10</button></th>
  </tr>
 
   <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('11')">11</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('12')">12</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('13')">13</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('14')">14</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('15')">15</button></th>
+  <th><button type="button" id="btnOnzeNumber" class="btnNumber" onClick="addValue('11', 'btnOnzeNumber')">11</button></th>
+  <th><button type="button" id="btnDozeNumber" class="btnNumber" onClick="addValue('12', 'btnDozeNumber')">12</button></th>
+  <th><button type="button" id="btnTrezeNumber"class="btnNumber" onClick="addValue('13', 'btnTrezeNumber')">13</button></th>
+  <th><button type="button" id="btnQuatorzeNumber" class="btnNumber" onClick="addValue('14', 'btnQuatorzeNumber')">14</button></th>
+  <th><button type="button" id="btnQuinzeNumber" class="btnNumber" onClick="addValue('15', 'btnQuinzeNumber')">15</button></th>
  </tr>  
 
   <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('16')">16</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('17')">17</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('18')">18</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('19')">19</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('20')">20</button></th>
+  <th><button type="button" id="btnDezesseisNumber" class="btnNumber" onClick="addValue('16', 'btnDezesseisNumber')">16</button></th>
+  <th><button type="button" id="btnDezesseteNumber" class="btnNumber" onClick="addValue('17', 'btnDezesseteNumber')">17</button></th>
+  <th><button type="button" id="btnDezoiotoNumber" class="btnNumber" onClick="addValue('18', 'btnDezoiotoNumber')">18</button></th>
+  <th><button type="button" id="btnDezenoveNumber" class="btnNumber" onClick="addValue('19', 'btnDezenoveNumber')">19</button></th>
+  <th><button type="button" id="btnVinteNumber"  class="btnNumber" onClick="addValue('20', 'btnVinteNumber')">20</button></th>
  </tr>
 
  <tr>
-  <th><button type="button" class="btnNumber" onClick="addValue('21')">21</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('22')">22</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('23')">23</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('24')">24</button></th>
-  <th><button type="button" class="btnNumber" onClick="addValue('25')">25</button></th>
+  <th><button type="button" id="btnVinteUmNumber" class="btnNumber" onClick="addValue('21', 'btnVinteUmNumber')">21</button></th>
+  <th><button type="button" id="btnVinteDoisNumber" class="btnNumber" onClick="addValue('22', 'btnVinteDoisNumber')">22</button></th>
+  <th><button type="button" id="btnVinteTresNumber" class="btnNumber" onClick="addValue('23', 'btnVinteTresNumber')">23</button></th>
+  <th><button type="button" id="btnVinteQuatroNumber" class="btnNumber" onClick="addValue('24', 'btnVinteQuatroNumber')">24</button></th>
+  <th><button type="button" id="btnVinteCincoNumber" class="btnNumber" onClick="addValue('25', 'btnVinteCincoNumber')">25</button></th>
  </tr>
- </table></center>
+ </table>
+
+    </div><!--/col-->
+
+    <div class="col">
+     <table>
+     <tr>
+      <th><label id="txtChoosingValue" class="ont-weight-bold">Quantidade selecionada:<br>0</label></th>
+      </tr>
+     </table>
+    </div> <!--/col-->
+    
+  </div><!-- /row -->
+</div><!-- /container -->
+  <center><input type="submit" class="btn text-white" name="btnAction" value="Verificar Jogo" style="background-color: #6f42c1;"/>
+  </center>
+</form>
+<!-- /Comparate o jogo -->
+    <!--<select  id="exampleFormControlSelect1" name="concurso">-->
+     
+
+
+<br>
+
 
   <br>
-
-  <center><table>
-  <tr>
-  <input type="submit" class="btn text-white" name="btnAction" value="Verificar Jogo" style="background-color: #6f42c1;"/>
-  </tr>
-</form>
-</table></center>
 
           <div class="content">
                 <div class="h1">
@@ -446,19 +502,186 @@
                           "id_bolaoDezesseis", "id_bolaoDezessete", "id_bolaoDezoito", "id_bolaoDezenove", "id_bolaoVinte"];
 
       var selectedComponent,showHide=false;
+      var btnsSelected = [], numberChoosingByUser = [];
 
     function start(){
-    selectedComponent= "id_bolaoUm";
-    changeColorComponent();
-    clearComponent();
+     selectedComponent= "id_bolaoUm";
+     changeColorComponent();
+     casePhpReturn();
+     casePhpReturnColorButton();
     }
 
+    function casePhpReturn(){
+      numberChoosingByUser = [];
+      for(var k=0; k<components.length; k++){
+        if(document.getElementById(components[k]).value != ""){
+          numberChoosingByUser.push(document.getElementById(components[k]).value); 
+        }
+      }
+    }
+
+   function casePhpReturnColorButton(){
+     for(var x=0; x<numberChoosingByUser.length; x++){
+       switch(numberChoosingByUser[x]){
+         case "01":
+           document.getElementById("btnUmNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnUmNumber").style.color = "#FFF";
+           btnsSelected.push("btnUmNumber");
+          break;
+
+          case "02":
+           document.getElementById("btnDoisNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDoisNumber").style.color = "#FFF";
+           btnsSelected.push("btnDoisNumber");
+          break;
+
+          case "03":
+           document.getElementById("btnTresNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnTresNumber").style.color = "#FFF";
+           btnsSelected.push("btnTresNumber");
+          break;
+
+          case "04":
+           document.getElementById("btnQuatroNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnQuatroNumber").style.color = "#FFF";
+           btnsSelected.push("btnQuatroNumber");
+          break;
+
+          case "05":
+           document.getElementById("btnCincoNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnCincoNumber").style.color = "#FFF";
+           btnsSelected.push("btnCincoNumber");
+          break;
+
+          case "06":
+           document.getElementById("btnSeisNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnSeisNumber").style.color = "#FFF";
+           btnsSelected.push("btnSeisNumber");
+          break;
+          
+          case "07":
+           document.getElementById("btnSeteNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnSeteNumber").style.color = "#FFF";
+           btnsSelected.push("btnSeteNumber");
+          break;
+
+          case "08":
+           document.getElementById("btnOitoNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnOitoNumber").style.color = "#FFF";
+           btnsSelected.push("btnOitoNumber");
+          break;
+
+          case "09":
+           document.getElementById("btnNoveNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnNoveNumber").style.color = "#FFF";
+           btnsSelected.push("btnNoveNumber");
+          break;
+
+          case "10":
+           document.getElementById("btnDezNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDezNumber").style.color = "#FFF";
+           btnsSelected.push("btnDezNumber");
+          break;
+
+          case "11":
+           document.getElementById("btnOnzeNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnOnzeNumber").style.color = "#FFF";
+           btnsSelected.push("btnOnzeNumber");
+          break;
+
+          case "12":
+           document.getElementById("btnDozeNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDozeNumber").style.color = "#FFF";
+           btnsSelected.push("btnDozeNumber");
+          break;
+
+          case "13":
+           document.getElementById("btnTrezeNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnTrezeNumber").style.color = "#FFF";
+           btnsSelected.push("btnTrezeNumber");
+          break;
+
+          case "14":
+           document.getElementById("btnQuatorzeNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnQuatorzeNumber").style.color = "#FFF";
+           btnsSelected.push("btnQuatorzeNumber");
+          break;
+
+          case "15":
+           document.getElementById("btnQuinzeNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnQuinzeNumber").style.color = "#FFF";
+           btnsSelected.push("btnQuinzeNumber");
+          break;
+
+          case "16":
+           document.getElementById("btnDezesseisNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDezesseisNumber").style.color = "#FFF";
+           btnsSelected.push("btnDezesseisNumber");
+          break;
+
+          case "17":
+           document.getElementById("btnDezesseteNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDezesseteNumber").style.color = "#FFF";
+           btnsSelected.push("btnDezesseteNumber");
+          break;
+
+          case "18":
+           document.getElementById("btnDezoiotoNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDezoiotoNumber").style.color = "#FFF";
+           btnsSelected.push("btnDezoiotoNumber");
+          break;
+
+          case "19":
+           document.getElementById("btnDezenoveNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnDezenoveNumber").style.color = "#FFF";
+           btnsSelected.push("btnDezenoveNumber");
+           break;
+         
+          case "20":
+           document.getElementById("btnVinteNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnVinteNumber").style.color = "#FFF";
+           btnsSelected.push("btnVinteNumber");
+          break;
+
+          case "21":
+           document.getElementById("btnVinteUmNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnVinteUmNumber").style.color = "#FFF";
+           btnsSelected.push("btnVinteUmNumber");
+          break;
+
+          case "22":
+           document.getElementById("btnVinteDoisNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnVinteDoisNumber").style.color = "#FFF";
+           btnsSelected.push("btnVinteDoisNumber");
+          break;
+
+          case "23":
+           document.getElementById("btnVinteTresNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnVinteTresNumber").style.color = "#FFF";
+           btnsSelected.push("btnVinteTresNumber");
+         break;
+
+          case "24":
+           document.getElementById("btnVinteQuatroNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnVinteQuatroNumber").style.color = "#FFF";
+           btnsSelected.push("btnVinteQuatroNumber");
+         break;
+
+          case "25":
+           document.getElementById("btnVinteCincoNumber").style.backgroundColor = "#6f42c1";
+           document.getElementById("btnVinteCincoNumber").style.color = "#FFF";
+           btnsSelected.push("btnVinteCincoNumber");
+           break;
+       }
+     }
+     countValueFromSelection();
+   }
       function selection(component){
         selectedComponent = component;
         changeColorComponent();
         changeDefaultColorOhers();
       }
-
+      
       function changeDefaultColorOhers(){
        for(var p=0; p<components.length; p++){
           if(components[p] != selectedComponent){
@@ -473,19 +696,23 @@
        document.getElementById(selectedComponent).style.color = "white";        
       }
 
-      function addValue(value){
-        document.getElementById(selectedComponent).value = value;
+      function addValue(value, component){
+        if(numberChoosingByUser.length < 20 || checkIfHaveBtnSelected(component)){
+        changeColorFromButtion(value, component);
+        countValueFromSelection();
         jumpToNext();
         changeColorComponent();
         changeDefaultColorOhers();
+        addValuesOnComponent();
+        }
       }
 
       function jumpToNext(){
-       for(var p=0; p<components.length; p++){
-          if(components[p] == selectedComponent && selectedComponent != "id_bolaoVinte"){
-            selectedComponent = components[p+=1];
-          } 
-       }
+           if(numberChoosingByUser.length >= 20){
+            selectedComponent = components[19];
+           }else{
+            selectedComponent = components[numberChoosingByUser.length];
+           }
       }
 
       function clearComponent(){
@@ -507,7 +734,65 @@
         showHide = true;
         }
       }
+      
+      function changeColorFromButtion(value, component){
+        if(checkIfHaveBtnSelected(component)){
+          btnsSelected.splice(getIndexFromBtnSelected(component),1);
+          numberChoosingByUser.splice(getIndexFromNumberChoosingByUser(value),1)
+          document.getElementById(component).style.backgroundColor = "#FFF";
+          document.getElementById(component).style.color = "#000";
+        }else{
+          numberChoosingByUser.push(value);
+          btnsSelected .push(component);
+          document.getElementById(component).style.backgroundColor = "#6f42c1";
+          document.getElementById(component).style.color = "#FFF";
+        }
+      }
 
+      //Add values on component
+      function addValuesOnComponent(){
+        numberChoosingByUser.sort();
+        for(var o=0; o<components.length; o++){
+          if(numberChoosingByUser[o] != null){
+           document.getElementById(components[o]).value = numberChoosingByUser[o];
+          }else{
+           document.getElementById(components[o]).value = "";
+          }
+        }          
+      }
+     
+      //Get index from numberChoosingByUser
+      function getIndexFromNumberChoosingByUser(value){
+        for(var p=0; p<numberChoosingByUser.length; p++){
+            if(numberChoosingByUser[p] == value){
+              return p;
+            }
+         } 
+       }
+       
+      //Get index from btnSelected
+       function getIndexFromBtnSelected(component){
+        for(var p=0; p<btnsSelected.length; p++){
+            if(btnsSelected[p] == component){
+              return p;
+            }
+         } 
+       }
+
+       //Check if have a item on btnsSelected
+       function checkIfHaveBtnSelected(component){
+        for(var p=0; p<btnsSelected.length; p++){
+            if(btnsSelected[p] == component){
+              return true;
+            }
+         }
+         return false; 
+       }
+
+      //Change text show the counting
+      function countValueFromSelection(){
+       document.getElementById("txtChoosingValue").innerHTML = "Quantidade selecionada:<br>"+numberChoosingByUser.length; 
+      }
       </script>
         <!-- Javascript-->
        <script src="{{ asset('js/loto-min.js') }}"></script>
