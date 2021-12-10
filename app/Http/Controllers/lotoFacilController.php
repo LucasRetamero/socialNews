@@ -11,12 +11,13 @@ class lotoFacilController extends Controller
               $points,
               $howMany = array(),
               $formsNumber = array(),
-              $numberChooseUser =  array();
+              $numberChooseUser =  array(),
+              $numberFourtheenCon = array(),
+              $numberFiftheenCon = array();
 
     //Check the points
     protected $numberEleven=0, $numberTwelve=0, $numberThirteen=0, 
-              $numberFortheen=0, $numberFiftheen=0,$concursoValue,
-              $maxValue=0;
+              $numberFortheen=0, $numberFiftheen=0;
 
     public function __construct(lotoFacilDAO $objLotoDAO){
     $this->objLoto = $objLotoDAO;
@@ -37,17 +38,15 @@ class lotoFacilController extends Controller
       arsort($this->howMany);
       return view('lotoJogos',['date'    => $this->objLoto->getAll(), 
                                'howMany' => $this->howMany, 
-                                'points' => $this->maxValue,
-                                'concurso' => $this->concursoValue,
                                 'elevenPoints' => $this->numberEleven,
                                 'twelvePoints' => $this->numberTwelve,
                                 'thirteenPoints' => $this->numberThirteen,
                                 'fortheenPoints' => $this->numberFortheen,
                                 'fiftheenPoints' => $this->numberFiftheen,
+                                'numbersConFourtheen' => $this->numberFourtheenCon,
+                                'numbersConFifhtheen' => $this->numberFiftheenCon, 
                                 'numberByUser' => $this->numberChooseUser,
-                                'allConcursos' => $this->objLoto->getAllConcursos(),
-                                'numberConcurso' => $request->input('concurso'),
-                                'valuesConcurso' => $this->objLoto->getOneConcurso($request->input('concurso'))]);
+                                'allConcursos' => $this->objLoto->getAllConcursos()]);
     }
 
     public function checkAllPoints(Request $request){
@@ -1405,11 +1404,13 @@ class lotoFacilController extends Controller
        }   
         
        if($lblSoma == 14){
-        $this->numberFortheen = $itens->concurso;
+        $this->numberFortheen+=1;
+        array_push($this->numberFourtheenCon, $itens->concurso);
        }
 
        if($lblSoma == 15){
-        $this->numberFiftheen = $itens->concurso;
+        $this->numberFiftheen+=1;
+        array_push($this->numberFiftheenCon, $itens->concurso);
        }
            
     }
