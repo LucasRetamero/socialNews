@@ -211,6 +211,11 @@
                     Compare seu jogo   
                 </div>
            </div>
+@if(isset($msgError))
+ <div class="alert alert-danger font-weight-bold" role="alert">
+   Selecione no minimo 15 números ! 
+ </div>
+@endif
 
 <!-- Comparate o jogo -->
 <form method="post" action="{{ route('home.loto.checkGame') }}">        
@@ -459,7 +464,18 @@
     
   </div><!-- /row -->
 </div><!-- /container -->
-  <input type="submit" class="btn text-white" name="btnAction" value="Verificar Jogo" style="background-color: #6f42c1;position:auto;margin-left: 50%;"/>
+  
+<div class="container">
+    <div class="row" style="position: auto;margin-left: 40%;">
+        <div class="col-xs-6">
+          <input type="submit" class="btn" name="btnAction" value="Verificar Jogo" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;"/>
+        </div>
+        <div class="col-xs-6" style="position:auto;margin-left: 15px;">
+        <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onclick="resetAll()">Limpar campos</button>
+        </div>
+    </div>
+</div>
+
 </form>
 <!-- /Comparate o jogo -->
   <br>

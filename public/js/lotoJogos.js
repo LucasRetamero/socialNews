@@ -3,6 +3,12 @@
                           "id_bolaoSeis", "id_bolaoSete", "id_bolaoOito", "id_bolaoNove", "id_bolaoDez",
                           "id_bolaoOnze", "id_bolaoDoze", "id_bolaoTreze", "id_bolaoQuatorze", "id_bolaoQuinze",
                           "id_bolaoDezesseis", "id_bolaoDezessete", "id_bolaoDezoito", "id_bolaoDezenove", "id_bolaoVinte"];
+       
+        var btnComponents = ["btnUmNumber", "btnDoisNumber","btnTresNumber", "btnQuatroNumber","btnCincoNumber",
+                             "btnSeisNumber", "btnSeteNumber", "btnOitoNumber", "btnNoveNumber","btnDezNumber",
+                             "btnOnzeNumber", "btnDozeNumber", "btnTrezeNumber", "btnQuatorzeNumber", "btnQuinzeNumber",
+                             "btnDezesseisNumber", "btnDezesseteNumber", "btnDezoiotoNumber", "btnDezenoveNumber", "btnVinteNumber",
+                             "btnVinteUmNumber", "btnVinteDoisNumber", "btnVinteTresNumber", "btnVinteQuatroNumber", "btnVinteCincoNumber"];
 
       var selectedComponent,showHide=false, parNumbers=0, imperNumbers=0, primosNumbers, compostoNumbers;
       var btnsSelected = [], numberChoosingByUser = [];
@@ -448,4 +454,26 @@
         }
       }
 
+      function resetAll(){
+        selectedComponent = "id_bolaoUm";
+        changeColorComponent();
+        changeDefaultColorOhers();
+        parNumbers=0, 
+        imperNumbers=0, 
+        primosNumbers=0;
+        compostoNumbers=0;
+        btnsSelected = [], 
+        numberChoosingByUser = [];
+        addValuesOnExtraInf();
+
+        for(var x=0; x<btnComponents.length; x++){
+         document.getElementById(btnComponents[x]).style.backgroundColor = "#FFF";
+         document.getElementById(btnComponents[x]).style.color = "#000";
+        }
+
+        for(var x=0; x<components.length; x++){
+         document.getElementById(components[x]).value = "";
+        }
+  
+      }
       
