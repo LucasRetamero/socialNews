@@ -205,6 +205,208 @@
     </table>
      @endif
   <br>
+
+  <div class="content">
+                <div class="h1 text-white" style="background-color:  #6f42c1; ">
+                    Gerar Números   
+                </div>
+           </div>
+
+<!-- Comparate o jogo -->
+<form method="post" action="{{ route('home.loto.checkGame') }}">        
+    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />    
+           <div class="container">
+  <div class="row"><!-- row -->
+
+    <div class="col">
+
+    <table class="table tbNumberToCompareGame">
+    <tr>
+     <h2 style="position:auto;margin-left: 25px;">Números Gerados </h2>
+    </tr>
+
+      <tr>
+       <th><label class="lblsToCompareGame">01</label>
+       <input type="text" class="form-control numberComparation" id="txtUm" style="background-color:#FFF;" readonly/></th>
+       
+       <th><label class="lblsToCompareGame">02</label>
+       <input type="text" class="form-control numberComparation" id="txtDois" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">03</label>
+       <input type="text" class="form-control numberComparation" id="txtTres" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">04</label>
+       <input type="text" class="form-control numberComparation" id="txtQuatro" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">05</label>
+       <input type="text" class="form-control numberComparation" id="txtCinco" style="background-color:#FFF;"  readonly/></th>
+      </tr>
+
+      <tr>
+       <th><label class="lblsToCompareGame">06</label>
+       <input type="text" class="form-control numberComparation" id="txtSeis" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">07</label>
+       <input type="text" class="form-control numberComparation" id="txtSete" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">08</label>
+       <input type="text" class="form-control numberComparation" id="txtOito" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">09</label>
+       <input type="text" class="form-control numberComparation" id="txtNove"  style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">10</label>
+       <input type="text" class="form-control numberComparation" id="txtDez"  style="background-color:#FFF;"  readonly/></th>
+      </tr>
+
+      <tr>
+       <th><label class="lblsToCompareGame">11</label>
+       <input type="text" class="form-control numberComparation" id="txtOnze" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">12</label>
+       <input type="text" class="form-control numberComparation" id="txtDoze" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">13</label>
+       <input type="text" class="form-control numberComparation" id="txtTreze" style="background-color:#FFF;"  readonly/></th>
+     
+       <th><label class="lblsToCompareGame">14</label>
+       <input type="text" class="form-control numberComparation" id="txtQuatorze" style="background-color:#FFF;"  readonly/></th>
+      
+       <th><label class="lblsToCompareGame">15</label>
+       <input type="text" class="form-control numberComparation" id="txtQuinze" style="background-color:#FFF;" readonly/></th>
+      </tr>
+
+      <tr>
+       <th><label class="lblsToCompareGame">16</label>
+       <input type="text" class="form-control numberComparation" id="txtDezeseis" style="background-color:#FFF;"  readonly/></th>
+      
+       <th><label class="lblsToCompareGame">17</label>
+       <input type="text" class="form-control numberComparation" id="txtDezesete" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">18</label>
+       <input type="text" class="form-control numberComparation" id="txtDezoito" style="background-color:#FFF;"  readonly/></th>
+      
+       <th><label class="lblsToCompareGame">19</label>
+       <input type="text" class="form-control numberComparation" id="txtDezenove" style="background-color:#FFF;"  readonly/></th>
+       
+       <th><label class="lblsToCompareGame">20</label>
+       <input type="text" class="form-control numberComparation" id="txtVinte" style="background-color:#FFF;"  readonly/></th>
+      </tr>
+
+      </table><!--/table -->
+    
+    </div><!--/col-->
+
+    <div class="col">
+      
+    <table>  
+    <tr>
+     <h2>Selecionar Números Fixos</h2>
+    </tr>
+
+ <tr style="background-color: #FFF!important">
+  <th><button type="button" id="txtUmEditado" class="btnNumber" onClick="addNumberByUser('txtUmEditado', '01')">01</button></th>
+  <th><button type="button" id="txtDoisEditado" class="btnNumber" onClick="addNumberByUser('txtDoisEditado', '02')">02</button></th>
+  <th><button type="button" id="txtTresEditado" class="btnNumber" onClick="addNumberByUser('txtTresEditado', '03')">03</button></th>
+  <th><button type="button" id="txtQuatroEditado"class="btnNumber" onClick="addNumberByUser('txtQuatroEditado', '04')">04</button></th>
+  <th><button type="button" id="txtCincoEditado" class="btnNumber" onClick="addNumberByUser('txtCincoEditado', '05')">05</button></th>
+ </tr>
+
+  <tr>
+  <th><button type="button" id="txtSeisEditado" class="btnNumber" onClick="addNumberByUser('txtSeisEditado', '06')">06</button></th>
+  <th><button type="button" id="txtSeteEditado" class="btnNumber" onClick="addNumberByUser('txtSeteEditado', '07')">07</button></th>
+  <th><button type="button" id="txtOitoEditado" class="btnNumber" onClick="addNumberByUser('txtOitoEditado', '08')">08</button></th>
+  <th><button type="button" id="txtNoveEditado" class="btnNumber" onClick="addNumberByUser('txtNoveEditado', '09')">09</button></th>
+  <th><button type="button" id="txtDezEditado"  class="btnNumber" onClick="addNumberByUser('txtDezEditado', '10')">10</button></th>
+ </tr>
+
+  <tr>
+  <th><button type="button" id="txtOnzeEditado" class="btnNumber" onClick="addNumberByUser('txtOnzeEditado', '11')">11</button></th>
+  <th><button type="button" id="txtDozeEditado" class="btnNumber" onClick="addNumberByUser('txtDozeEditado', '12')">12</button></th>
+  <th><button type="button" id="txtTrezeEditado"class="btnNumber" onClick="addNumberByUser('txtTrezeEditado', '13')">13</button></th>
+  <th><button type="button" id="txtQuatorzeEditado" class="btnNumber" onClick="addNumberByUser('txtQuatorzeEditado', '14')">14</button></th>
+  <th><button type="button" id="txtQuinzeEditado" class="btnNumber" onClick="addNumberByUser('txtQuinzeEditado', '15')">15</button></th>
+ </tr>  
+
+  <tr>
+  <th><button type="button" id="txtDezeseisEditado" class="btnNumber" onClick="addNumberByUser('txtDezeseisEditado', '16')">16</button></th>
+  <th><button type="button" id="txtDezeseteEditado" class="btnNumber" onClick="addNumberByUser('txtDezeseteEditado', '17')">17</button></th>
+  <th><button type="button" id="txtDezoitoEditado" class="btnNumber" onClick="addNumberByUser('txtDezoitoEditado', '18')">18</button></th>
+  <th><button type="button" id="txtDezenoveEditado" class="btnNumber" onClick="addNumberByUser('txtDezenoveEditado', '19')">19</button></th>
+  <th><button type="button" id="txtVinteEditado"  class="btnNumber" onClick="addNumberByUser('txtVinteEditado', '20')">20</button></th>
+ </tr>
+
+ <tr>
+  <th><button type="button" id="txtVinteUmEditado" class="btnNumber" onClick="addNumberByUser('txtVinteUmEditado', '21')">21</button></th>
+  <th><button type="button" id="txtVinteDoisEditado" class="btnNumber" onClick="addNumberByUser('txtVinteDoisEditado', '22')">22</button></th>
+  <th><button type="button" id="txtVinteTresEditado" class="btnNumber" onClick="addNumberByUser('txtVinteTresEditado', '23')">23</button></th>
+  <th><button type="button" id="txtVinteQuatroEditado" class="btnNumber" onClick="addNumberByUser('txtVinteQuatroEditado', '24')">24</button></th>
+  <th><button type="button" id="txtVinteCincoEditado" class="btnNumber" onClick="addNumberByUser('txtVinteCincoEditado', '25')">25</button></th>
+ </tr>
+ </table>
+
+    </div><!--/col-->
+
+    <div class="col">
+     <table class="tbNumberToCompareGame">
+      <tr>
+      <h2>Informações Extra</h2>
+      </tr>
+
+      <tr>
+       <td><label style="color:red;font-weight: bold;">Gerar(Quantidade):</label>
+       <select id="soHowManyGenerate"style="font-weight:bold;border-color: red;background-color: white;" onChange="clearCaseNumberUser()">
+        <option value="14" selected>15</option>
+        <option value="15">16</option>
+        <option value="16">17</option>
+        <option value="17">18</option>
+        <option value="18">19</option>
+        <option value="19">20</option>
+       </select></td>
+      </tr>
+
+      <tr>
+       <td><label style="color:red;font-weight: bold;">Selecionado:</label>
+       <td><input type="text"  id="txtQuantidadeSeleNumberGen" value="0/15" style="width:100px;background-color:#FFF;text-align: center;" readonly/></td>
+      </tr>
+
+      <tr>
+       <td><label style="color:red;font-weight: bold;">Impares(Total):</label></td>
+       <td><input type="text"  id="txtImparNumberGen" value="0" style="width:100px;background-color:#FFF;text-align: center;" readonly/></td>
+      </tr>
+
+     <tr>
+      <td><label style="color:red;font-weight: bold;">Pares(Total):</label></td>
+      <td><input type="text"  id="txtParNumberGen" value="0" style="width:100px;background-color:#FFF;text-align: center;" readonly/></td>
+     </tr>
+
+     <tr>
+      <td><label style="color:red;font-weight: bold;">Primos(Total):</label></td>
+      <td><input type="text"  id="txtPrimoNumberGen" value="0" style="width:100px;background-color:#FFF;text-align: center;" readonly/></td>
+     </tr>
+
+     <tr>
+      <td><label style="color:red;font-weight: bold;">Composto(Total):</label></td>
+      <td><input type="text"  id="txtCompostoNumberGen" value="0" style="width:100px;background-color:#FFF;text-align: center;" readonly/></td>
+     </tr>
+
+     </table>
+    </div> <!--/col-->
+    
+  </div><!-- /row -->
+</div><!-- /container -->
+
+<div class="container">
+    <div class="row" style="position: auto;margin-left: 40%;">
+        <div class="col-xs-6">
+          <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="generateRan()">Gerar jogo</button>
+        </div>
+        <div class="col-xs-6" style="position:auto;margin-left: 15px;">
+        <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="clearAllComponentGer()">Limpar campos</button>
+        </div>
+    </div>
+</div>
+
            
      <div class="content">
                 <div class="h1 text-white" style="background-color:  #6f42c1; ">

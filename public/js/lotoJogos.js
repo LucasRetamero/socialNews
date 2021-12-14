@@ -186,6 +186,7 @@
      }
      countValueFromSelection();
    }
+
       function selection(component){
         selectedComponent = component;
         changeColorComponent();
@@ -285,8 +286,7 @@
          }
          return false; 
        }
-
-
+    
       //Change text show the counting
       function countValueFromSelection(){
         countingAllValues();

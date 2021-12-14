@@ -33,11 +33,11 @@ class lotoFacilController extends Controller
 
     public function lotoPage(Request $request){
       $this->addValuesOnArray($request);
-      if(count(array_filter($this->numberChooseUser)) >= 15){
-      $this->checkAllPoints($request);
-      $this->getHowManyValues();
-      arsort($this->howMany);
-      return view('lotoJogos',['date'    => $this->objLoto->getAll(), 
+       if(count(array_filter($this->numberChooseUser)) >= 15){
+        $this->checkAllPoints($request);
+        $this->getHowManyValues();
+        arsort($this->howMany);
+         return view('lotoJogos',['date'    => $this->objLoto->getAll(), 
                                'howMany' => $this->howMany, 
                                 'elevenPoints' => $this->numberEleven,
                                 'twelvePoints' => $this->numberTwelve,
@@ -49,14 +49,14 @@ class lotoFacilController extends Controller
                                 'numberByUser' => $this->numberChooseUser,
                                 'allConcursos' => $this->objLoto->getAllConcursos()]);
 
-      }else{
-        $this->getHowManyValues();
-        arsort($this->howMany);
-         return view('lotoJogos',['date'=> $this->objLoto->getAll(), 
+       }else{
+          $this->getHowManyValues();
+          arsort($this->howMany);
+          return view('lotoJogos',['date'=> $this->objLoto->getAll(), 
                                   'howMany' => $this->howMany,
                                   'allConcursos' => $this->objLoto->getAllConcursos(),
                                   'msgError' => true,
-                                  'numberByUser' => $this->numberChooseUser,]);
+                                  'numberByUser' => $this->numberChooseUser]);
 
       }                               
     }
