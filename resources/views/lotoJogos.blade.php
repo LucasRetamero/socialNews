@@ -136,86 +136,37 @@
     @endforeach
     </table></center>
 
-@if(isset($elevenPoints))
-    <!-- inicio -->
-    <div class="content">
-        <div class="h1 text-white" style="background-color:  #6f42c1;">
-         Acertos
-        </div>
-     </div>
-
-     <table class="table">
-  <thead>
-    <tr  style="background-color:  #6f42c1;color:#FFF;">
-      <th scope="col">15(Qtd de jogos/Concurso)</th>
-      <th scope="col">14(Qtd de jogos/Concurso)</th>
-      <th scope="col">13(Qtd de jogos)</th>
-      <th scope="col">12(Qtd de jogos)</th>
-      <th scope="col">11(Qtd de jogos)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    
-     @if($fiftheenPoints != 0)
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:80px;text-align: center;" value="{{ $fiftheenPoints }}" readonly/>/
-      <select style="font-weight:bold;border-color: red; background-color: white;color: red;">
-        @foreach($numbersConFifhtheen as $itens)
-        <option>concurso: {{ $itens }}</option>
-        @endforeach
-       </select>
-    </td>
-    @else
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;" style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
-    @endif
-
-    @if($fortheenPoints != 0)
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:80px;text-align: center;" value="{{ $fortheenPoints }}" readonly/>/
-      <select style="font-weight:bold;border-color: red; background-color: white;color: red;">
-        @foreach($numbersConFourtheen as $itens)
-        <option>concurso: {{ $itens }}</option>
-        @endforeach
-       </select>
-    </td>
-    @else
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
-    @endif
-
-     @if($thirteenPoints != 0)
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $thirteenPoints }}" readonly/></td>
-    @else
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
-    @endif
-
-     @if($twelvePoints != 0)
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $twelvePoints }}" readonly/></td>
-    @else
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
-    @endif
-
-
-
-    @if($elevenPoints != 0)
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $elevenPoints }}" readonly/></td>
-    @else
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
-    @endif
-    </tr>
-    </tbody>
-    </table>
-     @endif
-  <br>
-
   <div class="content">
                 <div class="h1 text-white" style="background-color:  #6f42c1; ">
-                    Gerar Números   
+                    Gerar Números <p id="txtModeSelected" class="h3">Tipo: Fixar Números</p>   
                 </div>
            </div>
+
+    <div class="container">
+     <div class="row" style="position: auto;margin-left: 25%;">
+        <div class="col-xs-6">
+          <button type="button" id="btnRandomNumber" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="showGenerationAndCounting()">Gerar jogo</button>
+        </div>
+
+        <div class="col-xs-6" style="position:auto;margin-left: 15px;">
+          <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="checkGameWithRanValue()">Checar jogo</button>
+        </div>
+
+        <div class="col-xs-6" style="position:auto;margin-left: 15px;">
+         <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="clearAllComponentGer()">Limpar campos</button>
+        </div>
+
+        <div class="col-xs-6" style="position:auto;margin-left: 15px;">
+          <button type="button" id="btnRandomMode"class="btn" style="background-color: #9400D3;color: #FFF;font-size: 15px;font-weight:bold;" onClick="changeRandomMode()">Criar um jogo</button>
+        </div>
+    </div>
+</div>
 
 <!-- Comparate o jogo -->
 <form method="post" action="{{ route('home.loto.checkGame') }}">        
     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />    
            <div class="container">
+
   <div class="row"><!-- row -->
 
     <div class="col">
@@ -227,7 +178,7 @@
 
       <tr>
        <th><label class="lblsToCompareGame">01</label>
-       <input type="text" class="form-control numberComparation" id="txtUm" style="background-color:#FFF;" readonly/></th>
+        <input type="text" class="form-control numberComparation" id="txtUm" style="background-color:#FFF;" readonly/></th>
        
        <th><label class="lblsToCompareGame">02</label>
        <input type="text" class="form-control numberComparation" id="txtDois" style="background-color:#FFF;"  readonly/></th>
@@ -301,7 +252,7 @@
       
     <table>  
     <tr>
-     <h2>Selecionar Números Fixos</h2>
+     <h2>Selecionar Fixos</h2>
     </tr>
 
  <tr style="background-color: #FFF!important">
@@ -346,7 +297,7 @@
  </table>
 
     </div><!--/col-->
-
+    
     <div class="col">
      <table class="tbNumberToCompareGame">
       <tr>
@@ -355,7 +306,7 @@
 
       <tr>
        <td><label style="color:red;font-weight: bold;">Gerar(Quantidade):</label>
-       <select id="soHowManyGenerate"style="font-weight:bold;border-color: red;background-color: white;" onChange="clearCaseNumberUser()">
+       <select id="soHowManyGenerate"style="font-weight:bold;border-color: red;background-color: white;" onChange="clearAllComponentGer()">
         <option value="14" selected>15</option>
         <option value="15">16</option>
         <option value="16">17</option>
@@ -396,18 +347,80 @@
   </div><!-- /row -->
 </div><!-- /container -->
 
-<div class="container">
-    <div class="row" style="position: auto;margin-left: 40%;">
-        <div class="col-xs-6">
-          <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="generateRan()">Gerar jogo</button>
+@if(isset($elevenPoints))
+    <!-- inicio -->
+    <div class="content">
+        <div class="h1 text-white" style="background-color:  #6f42c1;">
+         Acertos
         </div>
-        <div class="col-xs-6" style="position:auto;margin-left: 15px;">
-        <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="clearAllComponentGer()">Limpar campos</button>
-        </div>
-    </div>
-</div>
+     </div>
 
-           
+     <table class="table">
+  <thead>
+    <tr  style="background-color:  #6f42c1;color:#FFF;">
+      <th scope="col">15(Qtd de jogos/Concurso)</th>
+      <th scope="col">14(Qtd de jogos/Concurso)</th>
+      <th scope="col">13(Qtd de jogos)</th>
+      <th scope="col">12(Qtd de jogos)</th>
+      <th scope="col">11(Qtd de jogos)</th>
+      <th scope="col">Ultimo concurso(Qtd de jogos)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    
+     @if($fiftheenPoints != 0)
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:80px;text-align: center;" value="{{ $fiftheenPoints }}" readonly/>/
+      <select style="font-weight:bold;border-color: red; background-color: white;color: red;">
+        @foreach($numbersConFifhtheen as $itens)
+        <option>concurso: {{ $itens }}</option>
+        @endforeach
+       </select>
+    </td>
+    @else
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;" style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
+    @endif
+
+    @if($fortheenPoints != 0)
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:80px;text-align: center;" value="{{ $fortheenPoints }}" readonly/>/
+      <select style="font-weight:bold;border-color: red; background-color: white;color: red;">
+        @foreach($numbersConFourtheen as $itens)
+        <option>concurso: {{ $itens }}</option>
+        @endforeach
+       </select>
+    </td>
+    @else
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
+    @endif
+
+     @if($thirteenPoints != 0)
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $thirteenPoints }}" readonly/></td>
+    @else
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
+    @endif
+
+     @if($twelvePoints != 0)
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $twelvePoints }}" readonly/></td>
+    @else
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
+    @endif
+
+
+
+    @if($elevenPoints != 0)
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $elevenPoints }}" readonly/></td>
+    @else
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
+    @endif
+
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $elevenPoints }}" readonly/></td>
+   
+    </tr>
+    </tbody>
+    </table>
+     @endif
+
+<br>    
      <div class="content">
                 <div class="h1 text-white" style="background-color:  #6f42c1; ">
                     Compare seu jogo   
@@ -547,7 +560,7 @@
        <input type="text" class="form-control numberComparation" id="id_bolaoOnze" name="bolaoOnze"  onClick="selection('id_bolaoOnze')" readonly/></th>
        
        <th><label class="lblsToCompareGame">12</label>
-       <input type="text" class="form-control numberComparation" id="id_bolaoDoze" name="bolaoDoze"  onClick="selection('id_bolaoDoze')" readonly/></th>
+       <input type="text" class="form-control nu    mberComparation" id="id_bolaoDoze" name="bolaoDoze"  onClick="selection('id_bolaoDoze')" readonly/></th>
        
        <th><label class="lblsToCompareGame">13</label>
        <input type="text" class="form-control numberComparation" id="id_bolaoTreze" name="bolaoTreze" onClick="selection('id_bolaoTreze')" readonly/></th>
@@ -670,10 +683,10 @@
 <div class="container">
     <div class="row" style="position: auto;margin-left: 40%;">
         <div class="col-xs-6">
-          <input type="submit" class="btn" name="btnAction" value="Verificar Jogo" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;"/>
+          <input type="submit" id="btnCheckGame" class="btn" name="btnAction" value="Verificar Jogo" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;"/>
         </div>
         <div class="col-xs-6" style="position:auto;margin-left: 15px;">
-        <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onclick="resetAll()">Limpar campos</button>
+          <button type="button" class="btn" style="background-color: #6f42c1;color: #FFF;font-size: 15px;font-weight:bold;" onClick="resetAll()">Limpar campos</button>
         </div>
     </div>
 </div>
@@ -734,6 +747,7 @@
 
     
         <!-- Javascript-->
+       
        <script src="{{ asset('js/lotoJogos.js')}}"></script>
        <script src="{{ asset('js/loto-min.js') }}"></script>
        <script src="{{ asset('js/bootstrap.min.js' )}}"></script>

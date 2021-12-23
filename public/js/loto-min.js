@@ -1,4 +1,3 @@
-// Componentes
 var  componentes = [
      document.getElementById("txtUm"), 
      document.getElementById("txtDois"),
@@ -21,7 +20,7 @@ var  componentes = [
      document.getElementById("txtDezenove"),
      document.getElementById("txtVinte")
 ];
-//Editable Variable
+
 var  componentesEditable = [
     document.getElementById("txtUmEditado"), 
     document.getElementById("txtDoisEditado"),
@@ -50,227 +49,305 @@ var  componentesEditable = [
     document.getElementById("txtVinteCincoEditado")
 ];
 
-//Number choosing  by user
-var numberUser = [];
-var componentsChangeColor = [];
-var valor = document.getElementById("soHowManyGenerate");
-var backupNumberUser=[];
-var change = 0;
+var componentsToCheck = [ document.getElementById("id_bolaoUm"),
+                   document.getElementById("id_bolaoDois"),
+                   document.getElementById("id_bolaoTres"),
+                   document.getElementById("id_bolaoOuatro"),
+                   document.getElementById("id_bolaoCinco"),
+                   document.getElementById("id_bolaoSeis"), 
+                   document.getElementById("id_bolaoSete"), 
+                   document.getElementById("id_bolaoOito"), 
+                   document.getElementById("id_bolaoNove"), 
+                   document.getElementById("id_bolaoDez"),
+                   document.getElementById("id_bolaoOnze"), 
+                   document.getElementById("id_bolaoDoze"), 
+                   document.getElementById("id_bolaoTreze"), 
+                   document.getElementById("id_bolaoQuatorze"), 
+                   document.getElementById("id_bolaoQuinze"),
+                   document.getElementById("id_bolaoDezesseis"), 
+                   document.getElementById("id_bolaoDezessete"), 
+                   document.getElementById("id_bolaoDezoito"), 
+                   document.getElementById("id_bolaoDezenove"), 
+                   document.getElementById("id_bolaoVinte")
+];
 
-//Get value after check
-var numberWasGenerate = [],parNumbers=0, imperNumbers=0, primosNumbers=0, compostoNumbers=0,valuesSelected=0;
+var numberUser = [], componentsChangeColor = [], backupNumberUser = [], numberCreateGame = [], numberWasGenerate = [];
+var change = 0, randomMode = "all", parNumbers=0, imperNumbers=0, primosNumbers=0, compostoNumbers=0, valuesSelected=0;
+var valor = document.getElementById("soHowManyGenerate");
 
 function generateRan(){
 
     var mtz=[], pos=0;
-    
+      
+    if(change == 0 && randomMode != "all"){ addBackupNumberToggleChange(1); }
+     if(randomMode != "all"){ mtz.pushArray(numberUser); }
+
         while(mtz.length<=valor.value){
     
         let num=(Math.floor(Math.random()*25) + 1);
     
         num=addZero(num, 2); //formata num com 2 dígitos
     
-    /*
-    
-    pos = posição do num na matriz, 
-    
-    se pos = -1, não encontrou, e num é armazenado em 'mtz'. => Veja no log
-    
-    */
-    
         pos=mtz.toString().search(num);
     
-     //console.log('Num => '+num+' Pos => '+pos);
-            if(pos<0) mtz.push(num);
-    
+        if(pos<0) mtz.push(num);
+
         }
 
         mtz.sort();
-        if(numberUser.length > 0){
-        showComponentes(showNumberByUser(valor.value));
-        }else{
-        showComponentes(mtz);
-        }
         
-        showValuesOnExtraInf();
-    }
-    
-    function addZero(y,n) {
-    
-        while (y.toString().length < n) {
-    
-        y = "0" + y;}
-    
-        return y;
-    }
-
-    function showComponentes(array){
-      clearComponentes();
-    
-      for(var p=0; p< componentes.length; p++){
-        if(p<array.length){
-             if(componentes[p].value == ""){
-             componentes[p].value = array[p];
-             }
-        }else{
-        componentes[p].value = "";   
-        } 
-      }
-    }
-    
-    function showNumberByUser(value){
-       var mtz=[], pos=0;
-      
-       if(change == 0){
-        backupNumberUser=[];
-        backupNumberUser.pushArray(numberUser);
-        change = 1;
-       }
-       numberUser = [];
-       numberUser.pushArray(backupNumberUser);
-       mtz.pushArray(numberUser);
-
-        while(mtz.length<=value){
-    
-        let num=(Math.floor(Math.random()*25) + 1);
-    
-        num=addZero(num, 2); //formata num com 2 dígitos
-    
-    /*
-    
-    pos = posição do num na matriz, 
-    
-    se pos = -1, não encontrou, e num é armazenado em 'mtz'. => Veja no log
-    
-    */
-    
-        pos=mtz.toString().search(num);
-    
-     //console.log('Num => '+num+' Pos => '+pos);
-            if(pos<0) mtz.push(num);
-    
-        }
-
-        mtz.sort();
         return mtz;
     }
+    
+   function addBackupNumUpdateChange(){
+    backupNumberUser=[];
+     backupNumberUser.pushArray(numberUser);
+      change = 1;
+   }
+    
+    function addZero(y,n) {
+     while (y.toString().length < n) {y = "0" + y;}
+      return y;
+    }
 
+
+   //Check mode before add value
+    function checkModeBeforeShow(){
+      switch(randomMode){
+        case "all":
+         showComponentes(generateRan());
+        break;
+
+        case "fixNumber":
+         showComponentes(generateRan());
+        break;
+
+        case "createGameNumber":
+         addValuesBetweenArrays();
+          showComponentes(generateRan());
+        break;
+      }
+      resetDefaultColorNumGen();
+    }
+
+    //Generete one value
+    function generateOneValueRan(){
+      let num=(Math.floor(Math.random()*valor.value));
+       return num;
+    }
+    
+    //Add values on input text 
+    function showComponentes(array){
+     clearComponentes(componentes);
+      for(var p=0; p< componentes.length; p++){
+       addValueWhenHaveArray(array, componentes[p], p);
+     }
+   }
+
+    //Check case have value inside array
+    function addValueWhenHaveArray(objArray, objElement, objP){
+      if(objP < objArray.length) return objElement.value = objArray[objP];
+      else return objElement.value = "";
+    }
+    
+    //Add value between array and other array
     Array.prototype.pushArray = function(arr) {
       this.push.apply(this, arr);
-  };
+    };
     
-
-    function resetGenerate(){
-      for(var p=0; p<componentesEditable.length; p++){
-        componentesEditable[p].style.borderColor = "red"; 
-        componentesEditable[p].style.color = "black";
-        componentesEditable[p].style.backgroundColor = "white"; 
-      }
+    function addValuesBetweenArrays(){
       numberUser = [];
-      componentsChangeColor = [];
-    }
-
-    function caseHaveNumber(value){
-      for(var o=0; o<numberUser.length; o++){
-         if(numberUser[o] == value){
-          return true;   
-         }
+        for(var x=0; x<filterToReturnValue("fixNumber"); x++){
+         var val = generateOneValueRan();
+          if(caseHaveNumber(numberUser, numberCreateGame[val])){ x--  }  
+           else{ numberUser.push(numberCreateGame[val]); }
       }
-      return false;
     }
 
-    function validationIfHaveNumber(array, value){
+    function resetDefaultColorNumGen(){
+      for(var p=0; p<componentes.length; p++){
+        componentes[p].style.color = "#000";
+        componentes[p].style.backgroundColor = "#FFF"; 
+      }
+    }
+
+    function caseHaveNumber(array, value){
       for(var z=0; z<array.length; z++){
-        if(array[z] == value){
-        return true;
-        }
+        if(array[z] == value){ return true; }
       }
       return false;
     }
-    
 
-    function clearComponentes(){
-        for(var p=0; p<componentes.length; p++){
-            componentes[p].value ="";
-         }
+    function searchIndexArray(array, value){
+      for(var x=0; x<array.length; x++){
+        if(array[x] == value) return x;
+      }
+    }
+  
+    function clearComponentes(array){
+      for(var p=0; p<array.length; p++){ array[p].value =""; }
     }
     
+    //Check case have or not elemnt before change
      function changeBorderColorAndInserValue(componente, value){
+      
+      if(change == 1){ addNumberArrayToggleChange(0); }
 
-     var getComponente = document.getElementById(componente);
-     
-       if(validationIfExistComponente(componente)){  
-        if(change == 1){
-          numberUser = [];
-          numberUser.pushArray(backupNumberUser);
-          change = 0;
-         }
-        componentsChangeColor.splice(removeIndexChangeColor(componente),1);
-        numberUser.splice(removeIndexNumber(value),1);
-        getComponente.style.color = "#000";
-        getComponente.style.backgroundColor = "#FFF"; 
-        valuesSelected-=1;
-       }else{
-        if(change == 1){
-          numberUser = [];
-          numberUser.pushArray(backupNumberUser);
-          change = 0;
-         }
-        componentsChangeColor.push(componente);
-        numberUser.push(value);
-        getComponente.style.color = "#FFF";
-        getComponente.style.backgroundColor = "#6f42c1";
-        valuesSelected+=1;
+       switch(caseHaveNumber(componentsChangeColor, componente)){ 
+       
+        case true: 
+         removeValuesOnArray("componentsChangeColor", componente);
+          checkWhatChangeArray("remove", value);
+           changeColorAndBackgroundColorElement(document.getElementById(componente), "#000", "#FFF");
+            valuesSelected-=1;
+        break;
+       
+        default:
+         addValuesOnArray("componentsChangeColor", componente);
+          checkWhatChangeArray("add", value);
+           changeColorAndBackgroundColorElement(document.getElementById(componente), "#FFF", "#6f42c1");
+            valuesSelected+=1;
+        break;
        }
        
       filterToShowSelectedValue();
      }
+      
+     function checkWhatChangeArray(mode, value){
+        switch(randomMode){
+          case "fixNumber":
+           (mode == "add") ? addValuesOnArray("numberUser", value) : removeValuesOnArray("numberUser", value);
+           break;
 
-     function removeIndexChangeColor(value){
-      for(var o=0; o<componentsChangeColor.length; o++){
-         if(componentsChangeColor[o] == value){
-          return o;   
-         } 
+          case "createGameNumber":
+           (mode == "add") ? addValuesOnArray("numberCreateGame", value) : removeValuesOnArray("numberCreateGame", value);
+          break;
+        }
+     }
+
+      
+     function addNumberArrayToggleChange(objValue){
+      numberUser = [];
+       numberUser.pushArray(backupNumberUser);
+        change = objValue;            
+     }
+
+     function addBackupNumberToggleChange(objValue){
+      backupNumberUser=[];
+       backupNumberUser.pushArray(numberUser);
+        change = objValue;           
+     }
+
+     function showGenerationAndCounting(){
+      checkModeBeforeShow();
+      countingAllValues();
+      showValuesOnExtraInfo();
+     }
+
+     function addValuesOnArray(objVar, objValue){
+       switch(objVar){
+         case "componentsChangeColor":
+          componentsChangeColor.push(objValue);
+         break;
+
+         case "numberUser":
+          numberUser.push(objValue);
+         break;
+
+         case "numberCreateGame":
+          numberCreateGame.push(objValue);
+         break;
+       }
+     }
+
+     function removeValuesOnArray(objVar, objValue){
+      switch(objVar){
+        case "componentsChangeColor":
+         componentsChangeColor.splice(searchIndexArray(componentsChangeColor, objValue),1);
+        break;
+
+        case "numberUser":
+         numberUser.splice(searchIndexArray(numberUser, objValue),1);
+        break;
+
+        case "numberCreateGame":
+         numberCreateGame.splice(searchIndexArray(numberCreateGame, objValue),1);
+        break;
       }
     }
 
-    function removeIndexNumber(value){
-        for(var o=0; o<numberUser.length; o++){
-           if(numberUser[o] == value){
-            return o;   
-           } 
-        }
-      }
-
-  
-     function validationIfExistComponente(value){
-        for(var x=0; x<componentsChangeColor.length; x++){
-            if(componentsChangeColor[x] == value){
-            return true;    
-            } 
-         }
-        return false;
+     //Change color and background-color of element 
+     function changeColorAndBackgroundColorElement(element, objColor, objBgColor){
+      element.style.color = objColor;
+      element.style.backgroundColor = objBgColor;
      }
-
+    
+     //Check the mode before call function
      function addNumberByUser(componente, value){
+       switch(randomMode){
+         case "createGameNumber":
+          checkCaseLimitSelected(numberCreateGame, componente, value);
+         break;
 
-         if(numberUser.length != filterValueToTheIf() || validationIfExistComponente(componente)){
-           changeBorderColorAndInserValue(componente, value);
-         }else{
-          alert("Numero maximo alcançado!");  
-         }
-         
+         default:
+          randomMode = "fixNumber";
+           checkCaseLimitSelected(numberUser, componente, value);
+         break;
+       }         
+     }
+
+     function resetCreateHame(){
+      document.getElementById("btnRandomMode").innerHTML = "Criar um jogo";
+       document.getElementById("btnRandomMode").style.backgroundColor = "#9400D3";
+        document.getElementById("txtModeSelected").innerHTML = "Tipo: Fixar Números";
+         randomMode = "all";
      }
      
-     function clearAllComponentGer(){
-      numberUser = [];
-      componentsChangeColor = [];
-      valuesSelected = 0;
-      filterToShowSelectedValue();
-      clearAllButtonGer();
-      clearAllTextGer();
+     function checkCaseLimitSelected(array, componente, value){
+      return (array.length < filterValueToCaseIf(randomMode) || caseHaveNumber(componentsChangeColor, componente)) ? changeBorderColorAndInserValue(componente, value) : showMsgCaseLimitSelected("Numero maximo alcançado!");
+     }
+  
+     function showMsgCaseLimitSelected(msg){
+      return alert(msg);
      }
      
+     function changeRandomMode(){
+       switch(randomMode){
+         case "all":
+         case "fixNumber":
+          randomMode = "createGameNumber";
+           changeInfoButtonAndText();
+         break;
+
+         case "createGameNumber":
+          randomMode = "fixNumber";
+           changeInfoButtonAndText();
+          break;
+       }
+       clearAllArray();
+        clearAllDefaultVar();
+         filterToShowSelectedValue();
+          clearAllButtonGer();
+           clearAllTextGer();
+            showValuesOnExtraInfo();
+     }
+
+     function changeInfoButtonAndText(){
+      switch(randomMode){
+       case "createGameNumber":
+        document.getElementById("btnRandomMode").innerHTML = "Números Fixados";
+         document.getElementById("btnRandomMode").style.backgroundColor = "#7B68EE";
+          document.getElementById("txtModeSelected").innerHTML = "Tipo: Criar Jogo";
+       break;
+
+       case "fixNumber":
+        document.getElementById("btnRandomMode").innerHTML = "Criar um jogo";
+         document.getElementById("btnRandomMode").style.backgroundColor = "#9400D3";
+          document.getElementById("txtModeSelected").innerHTML = "Tipo: Fixar Números";
+       break;
+       }
+     }
+
      function clearAllTextGer(){
       for(var p=0; p<componentes.length; p++){
         componentes[p].value = "";
@@ -283,50 +360,42 @@ function generateRan(){
         componentesEditable[p].style.color = "#000";
        }
      }
-
-     function clearCaseNumberUser(){
-        numberUser = [];
-        componentsChangeColor = [];
-        valuesSelected = 0;
-        filterToShowSelectedValue();
-         for(var p=0; p<componentesEditable.length; p++){
-          componentesEditable[p].style.backgroundColor = "#FFF";
-          componentesEditable[p].style.color = "#000";
-         }
-     }
-
-     function filterValueToTheIf(){
+     
+     function filterValueToCaseIf(mode){
       var filterValue;  
       switch(valor.value){
          case "14":
-          filterValue = 10;
+          filterValue = filterToReturnValue(mode, 10, 15);
          break;
 
          case "15":
-          filterValue = 11;
+          filterValue = filterToReturnValue(mode, 11, 16);
          break;
 
          case "16":
-          filterValue = 12;
+          filterValue = filterToReturnValue(mode, 12, 17);
          break;
 
          case "17":
-          filterValue = 13;
+          filterValue = filterToReturnValue(mode, 13, 18);
          break;
 
          case "18":
-          filterValue = 14;
+          filterValue =  filterToReturnValue(mode, 14, 19);
          break;
 
          case "19":
-          filterValue = 15;
+          filterValue = filterToReturnValue(mode, 15, 20);
          break;
       }
       return filterValue;
      }
 
-     function showValuesOnExtraInf(){
-      countingAllValues();
+     function filterToReturnValue(mode, firstValue, secondValue){
+     return (mode == "fixNumber") ? firstValue : secondValue; 
+     } 
+     
+     function showValuesOnExtraInfo(){
       var comp = ["txtParNumberGen",
                   "txtImparNumberGen",
                   "txtPrimoNumberGen",
@@ -338,181 +407,236 @@ function generateRan(){
                             compostoNumbers];
 
        for(var o=0; o<comp.length; o++){
-       document.getElementById(comp[o]).value = varWithValues[o];
+        document.getElementById(comp[o]).value = varWithValues[o];
        }
     }
 
+
+    
+    //Check value before show text
     function filterToShowSelectedValue(){
       switch(valor.value){
-      
         case "14":
-          document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+"/10";
+          checkValueBeforeShowMsg("/10", "/15");       
          break;
 
          case "15":
-          document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+"/11";
+          checkValueBeforeShowMsg("/11", "/16");
          break;
 
          case "16":
-          document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+"/12";
+          checkValueBeforeShowMsg("/12", "/17");
          break;
 
          case "17":
-          document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+"/13";
+          checkValueBeforeShowMsg("/13", "/18");
          break;
 
          case "18":
-          document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+"/14";
+          checkValueBeforeShowMsg( "/14", "/19");
          break;
 
          case "19":
-          document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+"/15";
+          checkValueBeforeShowMsg("/15", "/20");
          break;
       }
     }
+    
+    function checkValueBeforeShowMsg(firstMsg, secondMsg){
+    return (randomMode == "fixNumber") ? showValueSelectNumElement(firstMsg) :  showValueSelectNumElement(secondMsg);
+    }
 
+    //Add text on txtQuantidadeSeleNumberGen element
+    function showValueSelectNumElement(objMsg){
+      return document.getElementById("txtQuantidadeSeleNumberGen").value = valuesSelected+objMsg;
+    }
+
+     function checkGameWithRanValue(){
+      clearComponentes(componentsToCheck);
+       for(var p=0; p<componentes.length; p++){
+          if(componentes[p].value != ""){ componentsToCheck[p].value = componentes[p].value; }
+       }
+       document.getElementById('btnCheckGame').click();
+     }
     
      function addValuesWasGenerate(){
       numberWasGenerate = [];
-      for(var o=0; o<componentes.length; o++){
-         if(componentes[o].value != ""){
-          numberWasGenerate.push(componentes[o].value);
-        }
+       for(var o=0; o<componentes.length; o++){
+        if(componentes[o].value != ""){ numberWasGenerate.push(componentes[o].value) };
       }
-     } 
+     }
+ 
+     function clearAllComponentGer(){
+      clearAllArray();
+       clearAllDefaultVar();
+        filterToShowSelectedValue();
+         clearAllButtonGer();
+          clearAllTextGer();
+           showValuesOnExtraInfo();
+            resetCreateHame();
+     }
+    
+     function clearAllArray(){
+      numberUser = [];
+       componentsChangeColor = [];
+        backupNumberUser = [];
+         numberCreateGame = [];
+          numberWasGenerate = [];
+     }
 
+     function clearAllDefaultVar(){
+      valuesSelected = 0;
+       change = 0;
+        parNumbers=0;
+         imperNumbers=0; 
+          primosNumbers=0; 
+           compostoNumbers=0;
+            valuesSelected=0;
+     }
+ 
+     //Get all values and check one by one of values to count
      function countingAllValues(){
+      resetValuesBeforeAdd();
+       addValuesWasGenerate();
+        for(var l=0; l<numberWasGenerate.length; l++){  
+         countExtraValues(numberWasGenerate[l]);
+       }
+    }
+
+    //Reset before add values
+    function resetValuesBeforeAdd(){
       imperNumbers = 0;
-      parNumbers = 0;
-      primosNumbers = 0;
-      compostoNumbers = 0;
-      addValuesWasGenerate();
-      for(var l=0; l<numberWasGenerate.length; l++){  
-       switch(numberWasGenerate[l]){
-          case "01": //impar
-          imperNumbers+=1;
-         break;
+       parNumbers = 0;
+        primosNumbers = 0;
+         compostoNumbers = 0;
+    }
 
-         case "02": //par
-          parNumbers+=1;
-          primosNumbers+=1;
-         break;
+    //Check values and counting 
+    function countExtraValues(value){
+      switch(value){
+        case "01": //impar
+        imperNumbers+=1;
+       break;
 
-         case "03":
-          imperNumbers+=1;
-          primosNumbers+=1;
-         break;
+       case "02": //par
+        parNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "04":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "03":
+        imperNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "05":
-          imperNumbers+=1;
-          primosNumbers+=1;
-         break;
+       case "04":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "06":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
-         
-         case "07":
-          imperNumbers+=1;
-          primosNumbers+=1;
-         break;
+       case "05":
+        imperNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "08":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "06":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
+       
+       case "07":
+        imperNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "09":
-          imperNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "08":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "10":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "09":
+        imperNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "11":
-          imperNumbers+=1;
-          primosNumbers+=1;
-         break;
+       case "10":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "12":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "11":
+        imperNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "13":
-          imperNumbers+=1;
-          primosNumbers+=1;
-         break;
+       case "12":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "14":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "13":
+        imperNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "15":
-          imperNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "14":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "16":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "15":
+        imperNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "17":
-          imperNumbers+=1;
-          primosNumbers+=1;
-         break;
+       case "16":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "18":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "17":
+        imperNumbers+=1;
+        primosNumbers+=1;
+       break;
 
-         case "19":
-          imperNumbers+=1;
-          primosNumbers+=1;
-          break;
-        
-         case "20":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
+       case "18":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "21":
-          imperNumbers+=1;
-          compostoNumbers+=1;
-         break;
-
-         case "22":
-          parNumbers+=1;
-          compostoNumbers+=1;
-         break;
-
-         case "23":
-          imperNumbers+=1;
-          primosNumbers+=1;
+       case "19":
+        imperNumbers+=1;
+        primosNumbers+=1;
         break;
+      
+       case "20":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
 
-         case "24":
-          parNumbers+=1;
-          compostoNumbers+=1;
+       case "21":
+        imperNumbers+=1;
+        compostoNumbers+=1;
+       break;
+
+       case "22":
+        parNumbers+=1;
+        compostoNumbers+=1;
+       break;
+
+       case "23":
+        imperNumbers+=1;
+        primosNumbers+=1;
+      break;
+
+       case "24":
+        parNumbers+=1;
+        compostoNumbers+=1;
+      break;
+
+       case "25":
+        imperNumbers+=1;
+        compostoNumbers+=1;
         break;
-
-         case "25":
-          imperNumbers+=1;
-          compostoNumbers+=1;
-          break;
-        }
       }
     }
 

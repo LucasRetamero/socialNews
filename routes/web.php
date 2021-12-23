@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Game\lotoFacilController@home')->name('home.loto');
 
-Route::get('/loto', 'lotoFacilController@home')->name('home.loto');
-
-Route::post('/loto/checkGame', 'lotoFacilController@lotoPage')->name('home.loto.checkGame');
+Route::post('/loto/checkGame', 'Game\lotoFacilController@lotoPage')->name('home.loto.checkGame');
