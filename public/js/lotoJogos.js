@@ -15,10 +15,11 @@
 
     function start(){
      selectedComponent = "id_bolaoUm";
-     changeColorComponent();
-     casePhpReturn();
-     casePhpReturnColorButton();
-     changeDefaultColorOhers();
+      changeColorBgColorElement(selectedComponent, "#FFF","#6f42c1");
+       casePhpReturn();
+        casePhpReturnColorButton()
+         countValueFromSelection();
+          changeDefaultColorOthers();
     }
 
     function casePhpReturn(){
@@ -188,43 +189,38 @@
    }
 
       function selection(component){
-        selectedComponent = component;
-        changeColorComponent();
-        changeDefaultColorOhers();
+       selectedComponent = component;
+        changeColorBgColorElement(selectedComponent, "#FFF","#6f42c1");
+         changeDefaultColorOthers();
       }
       
-      function changeDefaultColorOhers(){
+      function changeDefaultColorOthers(){
        for(var p=0; p<components.length; p++){
-          if(components[p] != selectedComponent){
-           document.getElementById(components[p]).style.backgroundColor = '#FFF';   
-           document.getElementById(components[p]).style.color = '#000';   
-         }
+        if(components[p] != selectedComponent){ changeColorBgColorElement(components[p], "#000", "#FFF"); }
        }     
       }
 
-      function changeColorComponent(){   
-       var getElementChange = document.getElementById(selectedComponent);
-        getElementChange.style.color = '#FFF';
-        getElementChange.style.backgroundColor = '#6f42c1'; 
+      function addValue(value, component){
+        return (numberChoosingByUser.length < 20 || checkIfHaveBtnSelected(component)) ? caseHaveFiftheenNumber(value, component) : caseHaveFiftheenNumberLess("Limite de núemors alcançado !"); 
       }
 
-      function addValue(value, component){
-        if(numberChoosingByUser.length < 20 || checkIfHaveBtnSelected(component)){
-        changeColorFromButtion(value, component);
-        countValueFromSelection();
-        jumpToNext();
-        changeColorComponent();
-        changeDefaultColorOhers();
-        addValuesOnComponent();
-        }
+      function caseHaveFiftheenNumberLess(msg){
+       alert(msg);
       }
+
+      function caseHaveFiftheenNumber(value, component){
+       changeColorFromButtion(value, component);
+        countValueFromSelection();
+         jumpToNext();
+          changeColorBgColorElement(selectedComponent, "#FFF","#6f42c1");
+           changeDefaultColorOthers();
+            addValuesOnComponent();
+      }
+
+
 
       function jumpToNext(){
-           if(numberChoosingByUser.length >= 20){
-            selectedComponent = components[19];
-           }else{
-            selectedComponent = components[numberChoosingByUser.length];
-           }
+       return (numberChoosingByUser.length >= 20) ? selectedComponent = components[19] : selectedComponent = components[numberChoosingByUser.length]; 
       }
 
       function clearComponent(){
@@ -234,18 +230,45 @@
       }
       
       function changeColorFromButtion(value, component){
-        if(checkIfHaveBtnSelected(component)){
-          btnsSelected.splice(getIndexFromBtnSelected(component),1);
-          numberChoosingByUser.splice(getIndexFromNumberChoosingByUser(value),1)
-          document.getElementById(component).style.backgroundColor = "#FFF";
-          document.getElementById(component).style.color = "#000";
-        }else{
-          numberChoosingByUser.push(value);
-          btnsSelected .push(component);
-          document.getElementById(component).style.backgroundColor = "#6f42c1";
-          document.getElementById(component).style.color = "#FFF";
+        switch(checkIfHaveBtnSelected(component)){
+ 
+         case true:
+          removeValueOnArray("btnsSelected", component);
+           removeValueOnArray("numberChoosingByUser", value);
+            changeColorBgColorElement(component, "#000", "#FFF");
+         break;
+ 
+         default:
+          addValueOnArray("btnsSelected", component);
+           addValueOnArray("numberChoosingByUser", value);
+            changeColorBgColorElement(component, "#FFF", "#6f42c1");
+          break;
+         }
+       }
+      
+       function removeValueOnArray(chooseArray, value){
+         switch(chooseArray){
+          case "btnsSelected":
+           btnsSelected.splice(getIndexFromBtnSelected(value),1);
+          break;
+  
+          case "numberChoosingByUser":
+           numberChoosingByUser.splice(getIndexFromNumberChoosingByUser(value),1);
+          break;
+          }
         }
-      }
+ 
+       function addValueOnArray(chooseArray, value){
+        switch(chooseArray){
+         case "btnsSelected":
+          btnsSelected.push(value);
+         break;
+ 
+         case "numberChoosingByUser":
+          numberChoosingByUser.push(value);
+         break;
+         }
+       }
 
       //Add values on component
       function addValuesOnComponent(){
@@ -256,7 +279,8 @@
           }else{
            document.getElementById(components[o]).value = "";
           }
-        }          
+        }
+        countValueFromSelection();
       }
      
       //Get index from numberChoosingByUser
@@ -289,15 +313,14 @@
     
       //Change text show the counting
       function countValueFromSelection(){
-        countingAllValues();
-        if(numberChoosingByUser.length < 15){
-          document.getElementById("txtChoosingValue").style.color = "red";
-          document.getElementById("txtChoosingValue").style.borderColor = "red"; 
-        }else{
-          document.getElementById("txtChoosingValue").style.color = "green";
-          document.getElementById("txtChoosingValue").style.borderColor = "green";
-        }
-        addValuesOnExtraInf();
+       (numberChoosingByUser.length < 15) ? changeColorBorderColorElement("txtChoosingValue", "red", "red") : changeColorBorderColorElement("txtChoosingValue", "green", "green"); 
+        countingAllValue();
+         addValuesOnExtraInf();
+      }
+
+      function changeColorBorderColorElement(objElement, objColor, objBorderColor){
+        document.getElementById(objElement).style.color = objColor;
+         document.getElementById(objElement).style.borderColor = objBorderColor;
       }
      
       //Add Values on component
@@ -319,12 +342,16 @@
          }
       }
 
-      //Counting impar and par
-      function countingAllValues(){
-        imperNumbers = 0;
+      function resetValuesBeforeCount(){
+       imperNumbers = 0;
         parNumbers = 0;
-        primosNumbers = 0;
-        compostoNumbers = 0;
+         primosNumbers = 0;
+          compostoNumbers = 0;
+      }
+
+      //Counting impar and par
+      function countingAllValue(){
+       resetValuesBeforeCount();
         for(var l=0; l<numberChoosingByUser.length; l++){  
          switch(numberChoosingByUser[l]){
             case "01": //impar
@@ -456,24 +483,31 @@
 
       function resetAll(){
         selectedComponent = "id_bolaoUm";
-        changeColorComponent();
-        changeDefaultColorOhers();
-        parNumbers=0, 
-        imperNumbers=0, 
-        primosNumbers=0;
-        compostoNumbers=0;
-        btnsSelected = [], 
+         changeColorBgColorElement(selectedComponent, "#FFF","#6f42c1");
+          changeDefaultColorOthers();
+           resetValuesBeforeCount();
+            resetAllArrays();
+             countingAllValue();
+              addValuesOnExtraInf();
+               changeBtnsDefaultColor();
+                clearComponents(components);
+      }
+
+      function resetAllArrays(){
+       btnsSelected = [], 
         numberChoosingByUser = [];
-        addValuesOnExtraInf();
+      }
 
-        for(var x=0; x<btnComponents.length; x++){
-         document.getElementById(btnComponents[x]).style.backgroundColor = "#FFF";
-         document.getElementById(btnComponents[x]).style.color = "#000";
-        }
+       function clearComponents(array){
+        for(var x=0; x<array.length; x++){ document.getElementById(array[x]).value = ""; }
+       }
 
-        for(var x=0; x<components.length; x++){
-         document.getElementById(components[x]).value = "";
-        }
-  
+      function changeBtnsDefaultColor(){
+        for(var x=0; x<btnComponents.length; x++){ changeColorBgColorElement(btnComponents[x], "#000", "#FFF"); }
+      }
+
+      function  changeColorBgColorElement(objElement, objColor, objBgColor){
+       document.getElementById(objElement).style.color = objColor;
+        document.getElementById(objElement).style.backgroundColor = objBgColor;
       }
       
