@@ -413,13 +413,53 @@
     <td style="font-weight:bold;background-color: #ffffb3;color: red;"><img src="{{ asset('img/iconNo.png') }}" width="30px" height="30px"/></td>
     @endif
 
-    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $elevenPoints }}" readonly/></td>
+    <td style="font-weight:bold;background-color: #ffffb3;color: red;"><input type="text" style="font-weight:bold;border-color: red; background-color: white;color: red;width:100px;text-align: center;" value="{{ $pointLastGame }}" readonly/></td>
    
     </tr>
     </tbody>
     </table>
-     @endif
+     
+    <div class="content">
+      <div class="h1">
+         Ultimo concurso: {{ $numberLastGame }}
+       </div>
+     </div>
+     <!-- lastGame -->
+     <center><table class="table w-50">
+  @foreach($date as $itens)
+    <thead class="text-white" style="background-color: #6f42c1;">
+    
+     @if($itens->concurso == $numberLastGame)
+      <tr>
+       <th scope="col">{{ $itens->bolaUm }}</th>
+       <th scope="col">{{ $itens->bolaDois }}</th>
+       <th scope="col">{{ $itens->bolaTres }}</th>
+       <th scope="col">{{ $itens->bolaQuatro }}</th>
+       <th scope="col">{{ $itens->bolaCinco }}</th>
+      </tr>
 
+       <tr>
+       <th scope="col">{{ $itens->bolaSeis }}</th>
+       <th scope="col">{{ $itens->bolaSete }}</th>
+       <th scope="col">{{ $itens->bolaOito }}</th>
+       <th scope="col">{{ $itens->bolaNove }}</th>
+       <th scope="col">{{ $itens->bolaDez }}</th>
+      </tr>
+
+       <tr>
+       <th scope="col">{{ $itens->bolaOnze }}</th>
+       <th scope="col">{{ $itens->bolaDoze }}</th>
+       <th scope="col">{{ $itens->bolaTreze }}</th>
+       <th scope="col">{{ $itens->bolaQuatorze }}</th>
+       <th scope="col">{{ $itens->bolaQuinze }}</th>
+      </tr>
+    @endif
+   
+   </thead>
+    @endforeach
+    </table></center>
+     <!-- /lastGame -->
+     @endif
 <br>    
      <div class="content">
                 <div class="h1 text-white" style="background-color:  #6f42c1; ">

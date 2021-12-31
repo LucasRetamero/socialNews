@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Game\lotoFacilController@home')->name('home.loto');
 
 Route::post('/loto/checkGame', 'Game\lotoFacilController@lotoPage')->name('home.loto.checkGame');
+
+Route::get('/user','Configuration\userController@home')->name('login.home');
+
+
+/* Testing Pay API*/
+Route::get('/getApi/{case}','testingApi@managerChange')->name('testingApiBuyng');
+Route::post('/doBuy','testingApi@creditCardCryp')->name('testingApiBuyng.crypto');
