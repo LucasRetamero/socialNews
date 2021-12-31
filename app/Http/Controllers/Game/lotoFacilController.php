@@ -18,7 +18,7 @@ class lotoFacilController extends Controller
 
     //Check the points
     protected $numberEleven=0, $numberTwelve=0, $numberThirteen=0, 
-              $numberFortheen=0, $numberFiftheen=0;
+              $numberFourtheen=0, $numberFiftheen=0, $lastPoints;
 
     public function __construct(lotoFacilDAO $objLotoDAO){
     $this->objLoto = $objLotoDAO;
@@ -56,13 +56,20 @@ class lotoFacilController extends Controller
                                   'elevenPoints' => $this->numberEleven,
                                   'twelvePoints' => $this->numberTwelve,
                                   'thirteenPoints' => $this->numberThirteen,
-                                  'fortheenPoints' => $this->numberFortheen,
+                                  'fortheenPoints' => $this->numberFourtheen,
                                   'fiftheenPoints' => $this->numberFiftheen,
                                   'numbersConFourtheen' => $this->numberFourtheenCon,
                                   'numbersConFifhtheen' => $this->numberFiftheenCon, 
                                   'numberByUser' => $this->numberChooseUser,
-                                  'allConcursos' => $this->objLoto->getAllConcursos()]);
+                                  'pointLastGame' => $this->lastPoints,
+                                  'numberLastGame' => $this->objLoto->getNumberLastGame()]);
 
+    }
+
+    public function checkPointLastGame(Request $request){
+    $this->addValuesOnArray($request);
+
+    return $this->objLoto->getPointsFiftheen($this->numberChooseUser);
     }
 
     public function checkAllPoints(Request $request){
@@ -88,9 +95,9 @@ class lotoFacilController extends Controller
           $ValuesCounting[14] = $this->checkAllNumbers($request, $itens->bolaQuinze);
         
        $lblSoma = $ValuesCounting[0]+$ValuesCounting[1]+$ValuesCounting[2]+$ValuesCounting[3]+$ValuesCounting[4]+$ValuesCounting[5]+$ValuesCounting[6]+$ValuesCounting[7]+$ValuesCounting[8]+$ValuesCounting[9]+$ValuesCounting[10]+$ValuesCounting[11]+$ValuesCounting[12]+$ValuesCounting[13]+$ValuesCounting[14];
-       
-       $this->countingInformation($lblSoma, $itens->concurso);
-           
+       if($itens->concurso == $this->objLoto->getNumberLastGame()){ $this->lastPoints = $lblSoma; }
+       $this->countingInformation($lblSoma, $itens->concurso);    
+
     }
      
   }
@@ -110,7 +117,7 @@ class lotoFacilController extends Controller
       break;
 
       case 14:
-       $this->numberFortheen+=1;
+       $this->numberFourtheen+=1;
         array_push($this->numberFourtheenCon, $valueGame);
       break;
  
