@@ -21,5 +21,5 @@ Route::get('/user','Configuration\userController@home')->name('login.home');
 
 
 /* Testing Pay API*/
-Route::get('/getApi/{case}','testingApi@managerChange')->name('testingApiBuyng');
-Route::post('/doBuy','testingApi@creditCardCryp')->name('testingApiBuyng.crypto');
+Route::get('/getApi/{case}','testingApi@managerPagSeguroApi')->name('testingApiBuyng');
+Route::get('/doBuy','testingApi@home')->name('testingApiBuyng.crypto');

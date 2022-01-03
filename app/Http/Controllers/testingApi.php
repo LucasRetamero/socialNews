@@ -34,7 +34,7 @@ class testingApi extends Controller
           return $response;
     }
 
-    public function managerChange($case){
+    public function managerPagSeguroApi($case){
      switch($case){
       case 1:
        return $this->getAllByReferenceChange("ex-00001");
@@ -42,6 +42,14 @@ class testingApi extends Controller
 
       case 2:
        return $this->getOneChange("CHAR_2427B1E1-E02F-4AA1-9F09-483D5207FC07");
+      break;
+
+      case 3:
+       return $this->cancelChange("CHAR_2427B1E1-E02F-4AA1-9F09-483D5207FC07", "1000");
+      break;
+
+      case 4:
+       return $this->getPublicKey();
       break;
      }
     }
@@ -60,10 +68,24 @@ class testingApi extends Controller
     public function getOneChange($change_id){
       
       $response = http::withHeaders([
-        'Authorization' => $this->KeyApi
+        'Authorization' => $this->KeyApi,
       ])->send('GET','https://sandbox.api.pagseguro.com/charges/'.$change_id);
         
        return $response->json();
+    }
+    
+    public function cancelChange($change_id, $value){
+
+     $response = http::withHeaders([
+        'Accept' => 'application/json',
+        'Authorization' => $this->KeyApi,
+        'Content-Type' => 'application/json',
+        'x-api-version' => '4.0',
+     ])->send('POST','https://sandbox.api.pagseguro.com/charges/'.$change_id.'/cancel',[
+        'json' => [ 'amount' => [ 'value' => $value ] ]
+     ]);
+
+     return $response->json();
     }
 
     public function captureCharge(){
@@ -86,9 +108,7 @@ class testingApi extends Controller
     public function getPublicKey(){
 
       $response = http::withHeaders([
-        'Accept' => 'application/json',
         'Authorization' => $this->KeyApi,
-        'Content-Type' => 'application/json',
       ])->get('https://sandbox.api.pagseguro.com/public-keys/card');
      
       return $response->json();
