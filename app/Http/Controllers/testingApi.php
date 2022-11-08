@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Http;
 class testingApi extends Controller
 {
   //Key from PagSeguro API
-   protected $KeyApi = "199D3715973E44D08E3CFA56976C84BD";
+   protected $KeyApi = "#";
 
    //Credential to create app from PagSeguro API
-   protected $appID = "app5847928052";
-   protected $AppKey = "CDD6D9DABBBB6D3DD4F7AFBF1933939F";  
+   protected $appID = "#";
+   protected $AppKey = "#";  
 
    //Selling Testing from PagSeguro API
-  protected $emailSelling = "v00641973535343646264@sandbox.pagseguro.com.br";
-  protected $passwordSelling = "92UP16lmp38M3b42";
-  protected $publicKeySelling = "PUB3C2182421B6F4951A38969AA54C31508";
+  protected $emailSelling = "#";
+  protected $passwordSelling = "#";
+  protected $publicKeySelling = "#";
    
     public function createAplication(){
       $response = http::withHeaders([
@@ -41,7 +41,7 @@ class testingApi extends Controller
       break;
 
       case 2:
-       return $this->getOneChange("CHAR_2427B1E1-E02F-4AA1-9F09-483D5207FC07");
+       return $this->getOneChange("#");
       break;
      }
     }
